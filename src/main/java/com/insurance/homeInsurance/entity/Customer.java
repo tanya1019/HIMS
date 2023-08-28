@@ -2,6 +2,7 @@ package com.insurance.homeInsurance.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,6 +20,8 @@ public class Customer {
 	String name;
 	String password;
 	PropertyType propertType;
+	
+	String stripeId;
 	
 	
 	@OneToMany(cascade = {CascadeType.ALL})
@@ -40,8 +43,14 @@ public class Customer {
 	
 
 
-	public Customer(Integer id, String contactNumber, String email, String name, String password, 	PropertyType propertType,
-			List<OwnedPolicy> ownedPolicy, List<Property> propertyDetails) {
+
+
+
+
+
+
+	public Customer(Integer id, String contactNumber, String email, String name, String password,
+			PropertyType propertType, String stripeId, List<OwnedPolicy> ownedPolicy, List<Property> propertyDetails) {
 		super();
 		this.id = id;
 		this.contactNumber = contactNumber;
@@ -49,6 +58,7 @@ public class Customer {
 		this.name = name;
 		this.password = password;
 		this.propertType = propertType;
+		this.stripeId = stripeId;
 		this.ownedPolicy = ownedPolicy;
 		this.propertyDetails = propertyDetails;
 	}
@@ -57,11 +67,17 @@ public class Customer {
 
 
 
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", contactNumber=" + contactNumber + ", email=" + email + ", name=" + name
-				+ ", password=" + password + ", type=" + propertType + ", ownedPolicy=" + ownedPolicy + ", propertyDetails="
-				+ propertyDetails + "]";
+				+ ", password=" + password + ", propertType=" + propertType + ", stripeId=" + stripeId
+				+ ", ownedPolicy=" + ownedPolicy + ", propertyDetails=" + propertyDetails + "]";
 	}
 
 
@@ -71,6 +87,34 @@ public class Customer {
 	public List<OwnedPolicy> getOwnedPolicy() {
 		return ownedPolicy;
 	}
+
+
+
+
+
+	public String getStripeId() {
+		return stripeId;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setStripeId(String stripeId) {
+		this.stripeId = stripeId;
+	}
+
+
+
+
+
+
 
 
 
@@ -158,6 +202,43 @@ public class Customer {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, id);
+	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id);
 	}
 
 

@@ -1,5 +1,6 @@
 package com.insurance.homeInsurance.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class PropertyServiceImpl implements PropertyService {
 	 throw new CustomerException("Customer not found" +custId);
 	 }
 	 Customer customer = custOpt.get();
-	newProperty.setCustomer(customer);
+	 
+	 newProperty.setCustomer(customer);
 	 Property property = this.propertyRepo.save(newProperty) ;
 	 customer.getPropertyDetails().add(property);
 	 this.customerRepo.save(customer);
@@ -36,45 +38,40 @@ public class PropertyServiceImpl implements PropertyService {
 	 }
 	 
 	 
-	 
-	 
-	 
 	 @Override
-
-	 public Property getPropertyByCustomerID(Integer propId, Integer CustId) throws CustomerException {
-
+	 public Property getPropertyByCustomerID(Integer CustId, Integer propId) throws CustomerException {
 	 Optional<Customer> custOpt = this.customerRepo.findById(CustId);
-
 	 if (!custOpt.isPresent()) {
-
 	 throw new CustomerException("Customer not found" + CustId);
-
 	 }
-
 	 Customer customer = custOpt.get();
-
+	 
 	 Optional<Property> propertyOpt = this.propertyRepo.findById(propId);
-
-
-	 
-
 	 if (!propertyOpt.isPresent()) {
-
 	 throw new CustomerException("property not found" + propertyOpt);
-
 	 }
-
 	 Property property = propertyOpt.get();
-
-
 	 
-
 	 if (customer.getPropertyDetails().contains(property));
-
 	 return property;
-
-	 // else thro exceprion property does not belong to customer
+	 // else throw exception property does not belong to customer
 
 	 }
+
+	@Override
+	public List<Property> getPropertiesByCustomerId(Integer id) throws CustomerException {
+		
+		 Optional<Customer> custOpt = this.customerRepo.findById(id);
+		 if (!custOpt.isPresent()) {
+		 throw new CustomerException("Customer not found" + id);
+		 }
+		 Customer customer = custOpt.get();
+		 
+		List<Property> propsDetail = customer.getPropertyDetails();
+		 
+		 return propsDetail;
+		
+		
+	}
 
 }

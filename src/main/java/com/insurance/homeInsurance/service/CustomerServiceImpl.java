@@ -1,6 +1,7 @@
 package com.insurance.homeInsurance.service;
 
 import java.util.Collection;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,13 @@ public class CustomerServiceImpl implements CustomerService {
 		if(productOpt.isPresent()) 
 			throw new CustomerException("Customer Already Exist with name: " + newCustomer.getName());
 		
+//		Map<String, Customer> params = new HashMap<>();
+//		params.put(
+//		  "description",
+//		  "My First Test Customer (created for API docs at https://www.stripe.com/docs/api)"
+//		);
+//
+//		Customer customer = this.customerRepo.save(params);
 		
 		return this.customerRepo.save(newCustomer);
 	}

@@ -16,7 +16,7 @@ public class Property {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	Integer propId;
-	
+	Integer custId;
 	String houseNo;
 	Double areaInSquareFeet;
 	Double costOfProperty;
@@ -41,11 +41,14 @@ public class Property {
 		super();
 	}
 	
-	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty,
+
+
+	public Property(Integer propId, Integer custId, String houseNo, Double areaInSquareFeet, Double costOfProperty,
 			Double ageOfBuilding, Integer pincode, String city, String streetNumber, String region,
 			Boolean policyClaimed, Customer customer, OwnedPolicy ownedPolicy, Claim claim) {
 		super();
 		this.propId = propId;
+		this.custId = custId;
 		this.houseNo = houseNo;
 		this.areaInSquareFeet = areaInSquareFeet;
 		this.costOfProperty = costOfProperty;
@@ -59,6 +62,20 @@ public class Property {
 		this.ownedPolicy = ownedPolicy;
 		this.claim = claim;
 	}
+
+
+
+	public Integer getCustId() {
+		return custId;
+	}
+
+
+
+	public void setCustId(Integer custId) {
+		this.custId = custId;
+	}
+
+
 
 	public Integer getPropId() {
 		return propId;
@@ -147,10 +164,11 @@ public class Property {
 
 	@Override
 	public String toString() {
-		return "Property [propId=" + propId + ", houseNo=" + houseNo + ", areaInSquareFeet=" + areaInSquareFeet
-				+ ", costOfProperty=" + costOfProperty + ", ageOfBuilding=" + ageOfBuilding + ", pincode=" + pincode
-				+ ", city=" + city + ", streetNumber=" + streetNumber + ", region=" + region + ", policyClaimed="
-				+ policyClaimed + ", customer=" + customer + ", ownedPolicy=" + ownedPolicy + ", claim=" + claim + "]";
+		return "Property [propId=" + propId + ", custId=" + custId + ", houseNo=" + houseNo + ", areaInSquareFeet="
+				+ areaInSquareFeet + ", costOfProperty=" + costOfProperty + ", ageOfBuilding=" + ageOfBuilding
+				+ ", pincode=" + pincode + ", city=" + city + ", streetNumber=" + streetNumber + ", region=" + region
+				+ ", policyClaimed=" + policyClaimed + ", customer=" + customer + ", ownedPolicy=" + ownedPolicy
+				+ ", claim=" + claim + "]";
 	}
 	
 	
