@@ -1,5 +1,7 @@
 package com.insurance.homeInsurance.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +20,20 @@ public class PropertyController {
 	@Autowired
 	 PropertyService propertyServices;
 
-	 @PostMapping("/property/{id}")
+	 @PostMapping("/createProperty/{id}")
 	 public Property createPropertyByCustomerID(@RequestBody Property newProperty, @PathVariable("id") Integer id) throws CustomerException {
 	 return this.propertyServices.createPropertyByCustomerID(newProperty, id) ;
 	}
 	 
-	 @GetMapping("/property/{custId}/{propId}") 
+	 @GetMapping("/getProperty/{custId}/{propId}") 
 	 public Property getPropertyByCustomerID(@PathVariable("custId") Integer CustId, @PathVariable("propId") Integer PropId ) throws CustomerException{
 	 return this.propertyServices.getPropertyByCustomerID (CustId, PropId);
+
+	 }
+	 
+	 @GetMapping("/getAllProperties/{custId}") 
+	 public List<Property> getPropertiesByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
+	 return this.propertyServices.getPropertiesByCustomerId(CustId);
 
 	 }
 }
