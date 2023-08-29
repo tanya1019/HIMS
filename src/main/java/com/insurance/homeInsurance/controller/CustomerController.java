@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.insurance.homeInsurance.dto.loginDto;
 import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.service.CustomerService;
@@ -32,8 +33,6 @@ public class CustomerController {
 	public Customer addCustomer(@RequestBody Customer newCustomer) throws CustomerException {
 		
 		try {
-			
-			
 			
 			return this.customerService.addCustomer(newCustomer);
 		}catch (CustomerException e) {
@@ -72,7 +71,11 @@ public class CustomerController {
 	 }
 	 
 	 
-	 
+	 @PostMapping("/login")
+	 public Boolean login(@RequestBody loginDto login) throws CustomerException {
+ 
+		 return this.customerService.login(login);
+	 }
 	
 	 
 	   
