@@ -154,7 +154,7 @@ public class Property {
 		this.ownedPolicy = ownedPolicy;
 	}
 
-	public Claim getClaim() {
+	public Claim getClaim(Claim claim) {
 		return claim;
 	}
 

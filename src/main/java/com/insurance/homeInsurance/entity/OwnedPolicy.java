@@ -45,8 +45,34 @@ public class OwnedPolicy {
 	@OneToOne(cascade=CascadeType.ALL)
 	Payment paymentDetails;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	Claim claim;
 	
-	
+
+	public OwnedPolicy(Integer id, LocalDate issueDate, LocalDate expiryDate, String nomineeName, Integer nomineeAge,
+			String nomineeRelation, Boolean customePolicy, AdminPolicy adminPolicy, Customer customer,
+			Payment paymentDetails, Claim claim) {
+		super();
+		this.id = id;
+		this.issueDate = issueDate;
+		this.expiryDate = expiryDate;
+		this.nomineeName = nomineeName;
+		this.nomineeAge = nomineeAge;
+		this.nomineeRelation = nomineeRelation;
+		this.customePolicy = customePolicy;
+		this.adminPolicy = adminPolicy;
+		this.customer = customer;
+		this.paymentDetails = paymentDetails;
+		this.claim = claim;
+	}
+
+	public Claim getClaim(Claim claim) {
+		return claim;
+	}
+
+	public void setClaim(Claim claim) {
+		this.claim = claim;
+	}
 
 	public String getNomineeName() {
 		return nomineeName;
@@ -128,24 +154,6 @@ public class OwnedPolicy {
 		this.adminPolicy = adminPolicy;
 	}
 
-
-
-	public OwnedPolicy(Integer id, LocalDate issueDate, LocalDate expiryDate, String nomineeName, Integer nomineeAge,
-			String nomineeRelation, Boolean customePolicy, AdminPolicy adminPolicy, Customer customer,
-			Payment paymentDetails) {
-		super();
-		this.id = id;
-		this.issueDate = issueDate;
-		this.expiryDate = expiryDate;
-		this.nomineeName = nomineeName;
-		this.nomineeAge = nomineeAge;
-		this.nomineeRelation = nomineeRelation;
-		this.customePolicy = customePolicy;
-		this.adminPolicy = adminPolicy;
-		this.customer = customer;
-		this.paymentDetails = paymentDetails;
-	}
-
 	public OwnedPolicy() {
 		super();
 	}
@@ -155,7 +163,7 @@ public class OwnedPolicy {
 		return "OwnedPolicy [id=" + id + ", issueDate=" + issueDate + ", expiryDate=" + expiryDate + ", nomineeName="
 				+ nomineeName + ", nomineeAge=" + nomineeAge + ", nomineeRelation=" + nomineeRelation
 				+ ", customePolicy=" + customePolicy + ", adminPolicy=" + adminPolicy + ", customer=" + customer
-				+ ", paymentDetails=" + paymentDetails + "]";
+				+ ", paymentDetails=" + paymentDetails + ", claim=" + claim + "]";
 	}
 	
 

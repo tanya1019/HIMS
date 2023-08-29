@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.insurance.homeInsurance.dao.FeatureRepository;
 import com.insurance.homeInsurance.dao.OwnedPolicyRepository;
-import com.insurance.homeInsurance.entity.Customer;
+
 import com.insurance.homeInsurance.entity.Feature;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
 import com.insurance.homeInsurance.exception.CustomerException;

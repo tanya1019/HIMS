@@ -2,7 +2,6 @@ package com.insurance.homeInsurance.service;
 
 import java.util.Collection;
 
-import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.entity.Feature;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
 import com.insurance.homeInsurance.exception.CustomerException;
