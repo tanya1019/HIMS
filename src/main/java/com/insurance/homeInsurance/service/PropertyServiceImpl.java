@@ -14,6 +14,7 @@ import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.CustomerException;
 
 @Service
+
 public class PropertyServiceImpl implements PropertyService {
 	
 	@Autowired
@@ -36,8 +37,6 @@ public class PropertyServiceImpl implements PropertyService {
 	 this.customerRepo.save(customer);
 	 return property;
 	 }
-	 
-	 
 	 @Override
 	 public Property getPropertyByCustomerID(Integer CustId, Integer propId) throws CustomerException {
 	 Optional<Customer> custOpt = this.customerRepo.findById(CustId);
@@ -45,7 +44,7 @@ public class PropertyServiceImpl implements PropertyService {
 	 throw new CustomerException("Customer not found" + CustId);
 	 }
 	 Customer customer = custOpt.get();
-	 
+	
 	 Optional<Property> propertyOpt = this.propertyRepo.findById(propId);
 	 if (!propertyOpt.isPresent()) {
 	 throw new CustomerException("property not found" + propertyOpt);
@@ -55,7 +54,6 @@ public class PropertyServiceImpl implements PropertyService {
 	 if (customer.getPropertyDetails().contains(property));
 	 return property;
 	 // else throw exception property does not belong to customer
-
 	 }
 
 	@Override

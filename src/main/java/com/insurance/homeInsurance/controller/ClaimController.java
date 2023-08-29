@@ -36,6 +36,10 @@ public class ClaimController {
 	public Collection<Claim> getAllClaim() {
 		return this.claimService.getAllClaim();
 	}
+//	getClaimByPolicyId
+//	getClaimByCustomerId
+//	getAllClaimsByCustomerId
+	
 	
 	
 	@SuppressWarnings("unchecked")
