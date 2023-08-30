@@ -26,7 +26,6 @@ public class loginDto {
 		this.password = password;
 	}
 	
-	
 	public loginDto() {
 		super();
 	}
@@ -34,9 +33,5 @@ public class loginDto {
 	public String toString() {
 		return "loginDto [email=" + email + ", password=" + password + "]";
 	}
-	
-	
-	
-	
 
 }

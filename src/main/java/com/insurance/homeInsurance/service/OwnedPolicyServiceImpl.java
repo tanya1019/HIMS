@@ -10,8 +10,7 @@ import com.insurance.homeInsurance.dao.CustomerRepository;
 import com.insurance.homeInsurance.dao.OwnedPolicyRepository;
 import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
-import com.insurance.homeInsurance.entity.Property;
-import com.insurance.homeInsurance.exception.CustomerException;
+
 import com.insurance.homeInsurance.exception.OwnedPolicyException;
 @Service
 public class OwnedPolicyServiceImpl implements OwnedPolicyService {
@@ -22,62 +21,30 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
     CustomerRepository customerRepo;
 	
 	
-
 		@Override
-	public OwnedPolicy createOwnedPolicyByCustomerId(OwnedPolicy newOwnedPolicy, Integer CustId)
+		public OwnedPolicy createOwnedPolicyByCustomerId(OwnedPolicy newOwnedPolicy, Integer CustId)
 			throws OwnedPolicyException {
 	        Optional<Customer> custOpt = this.customerRepo.findById(CustId);
-
 	         if(!custOpt.isPresent()) {
-
 	           throw new OwnedPolicyException("Customer not found" +CustId);
-
 	         }
 
 	         Customer customer = custOpt.get();
-
-	         
-
 	         newOwnedPolicy.setCustomer(customer);
-
 	         OwnedPolicy ownedPolicy = this.ownedPolicyRepo.save(newOwnedPolicy);
-
-	         
-
 	         customer.getOwnedPolicy().add(ownedPolicy);
-
 	         this.customerRepo.save(customer);
-
-	         return ownedPolicy;
-
-	    
-		
+	         return ownedPolicy;	
 	}
-
-
-
 		@Override
 		public List<OwnedPolicy> getownedPolicyByCustomerId(Integer CustId) throws OwnedPolicyException {
 			Optional<Customer> custOpt = this.customerRepo.findById(CustId);
-
 	         if(!custOpt.isPresent()) {
-
-	           throw new OwnedPolicyException("Customer not found" +CustId);
-
+	          throw new OwnedPolicyException("Customer not found" +CustId);
 	         }
-
 	        Customer customer = custOpt.get();
-	         
-
-	        List<OwnedPolicy> getAllPolicies = customer.getOwnedPolicy();
-
-	         
-
-	         
-
-	        return getAllPolicies;
-
-	    
+	        List<OwnedPolicy> getAllPolicies = customer.getOwnedPolicy();       
+	        return getAllPolicies; 
 			
 		}
 
