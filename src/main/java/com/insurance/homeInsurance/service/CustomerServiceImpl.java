@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.insurance.homeInsurance.dao.CustomerRepository;
@@ -21,14 +22,17 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer addCustomer(Customer newCustomer) throws CustomerException {
-		
 	Optional<Customer> customerOpt = this.customerRepo.findByEmail(newCustomer.getEmail());
 	if(customerOpt.isPresent()) {
 		throw new CustomerException("Email id already exist");
 	}
+	
+	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	newCustomer.setPassword(passwordEncoder.encode(newCustomer.getPassword()));
 	return this.customerRepo.save(newCustomer);
 	}
 
+	
 	@Override
 	public Customer updateCustomer(Customer newCustomer) throws CustomerException {
 		
@@ -64,30 +68,29 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerOpt.get();
 	}
 
-	
+
 
 	@Override
-	public Boolean login(loginDto login) throws CustomerException {
+	public Customer login(loginDto login) throws CustomerException {
 		
-	 
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
 		Optional<Customer>customerOpt =this.customerRepo.findByEmail(login.getEmail());
 		
 		if(!customerOpt.isPresent()) {
 			throw new CustomerException("User not found");	
 		}
-		Customer customer = customerOpt.get();
 		
-		if(!customer.getPassword().equals(login.getPassword())) {
+		Customer customer = customerOpt.get();
+		System.out.println(customer);
+		
+		if(!passwordEncoder.matches(login.getPassword(), customer.getPassword())) {
 			throw new CustomerException("Invalid password");
 		}
 
-		return true;
-		
+		return customer;
 		
 	}
 
 	
-	
-
 }

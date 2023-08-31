@@ -4,16 +4,20 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Payment {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	Integer payment_id;
 	
 	Double paymentAmount;
@@ -23,6 +27,7 @@ public class Payment {
 	
 	String paymentType;
 	
+	@JsonIgnore
 	@ManyToOne(cascade = {CascadeType.ALL})
 	Customer customerDeatails;
 	

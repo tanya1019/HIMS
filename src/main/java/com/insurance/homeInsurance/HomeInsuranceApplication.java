@@ -23,7 +23,7 @@ public class HomeInsuranceApplication {
 //	@EventListener(ApplicationReadyEvent.class)
 //	
 //	public void sendEmail() {
-//		senderService.sendEmail("tyagihimank28@gmail.com", "Hello Himank", "This is the test mail send from Anish(Bajaj)");
+//		senderService.sendEmail("bountydange@gmail.com", "Need Help!!!!!!!", "Please help me with the further process");
 //	}
 	
 

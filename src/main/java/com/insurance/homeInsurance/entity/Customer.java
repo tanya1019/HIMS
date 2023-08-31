@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Customer {
@@ -18,7 +21,10 @@ public class Customer {
 	String contactNumber;
 	String email;
 	String name;
+	
+	@Column(nullable = false)
 	String password;
+	
 	PropertyType propertType;
 	
 	String stripeId;
@@ -189,6 +195,8 @@ public class Customer {
 	}
 
 	public void setPassword(String password) {
+//		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//		this.password = passwordEncoder.encode(password);
 		this.password = password;
 	}
 

@@ -45,6 +45,7 @@ public class OwnedPolicy {
 	Customer customer;
 	
 	@OneToOne(cascade=CascadeType.ALL)
+	@JsonIgnore
 	Payment paymentDetails;
 	
 	@OneToOne(cascade=CascadeType.ALL)
