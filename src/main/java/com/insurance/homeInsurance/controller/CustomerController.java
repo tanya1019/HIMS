@@ -72,7 +72,7 @@ public class CustomerController {
 	 
 	 
 	 @PostMapping("/login")
-	 public Boolean login(@RequestBody loginDto login) throws CustomerException {
+	 public Customer login(@RequestBody loginDto login) throws CustomerException {
  
 		 return this.customerService.login(login);
 	 }

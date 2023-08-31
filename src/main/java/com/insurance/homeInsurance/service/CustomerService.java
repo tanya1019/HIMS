@@ -14,6 +14,6 @@ public interface CustomerService {
 	
 	Customer updateCustomerUsingId(Customer customer) throws CustomerException;
 	Customer getCustomerById(Integer id)throws CustomerException;
-	Boolean login(loginDto login) throws CustomerException;
+	Customer login(loginDto login) throws CustomerException;
 	
 }

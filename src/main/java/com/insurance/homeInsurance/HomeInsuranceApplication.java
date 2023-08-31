@@ -20,11 +20,11 @@ public class HomeInsuranceApplication {
 		SpringApplication.run(HomeInsuranceApplication.class, args);
 	}
 	
-	@EventListener(ApplicationReadyEvent.class)
-	
-	public void sendEmail() {
-		senderService.sendEmail("anish.dhawalikar@bajajfinserv.in", "Need Help!!!!!!!", "Please help me with the further process");
-	}
+//	@EventListener(ApplicationReadyEvent.class)
+//	
+//	public void sendEmail() {
+//		senderService.sendEmail("bountydange@gmail.com", "Need Help!!!!!!!", "Please help me with the further process");
+//	}
 	
 
 }
