@@ -63,8 +63,5 @@ public class Renewal {
 		this.renewalDate = renewalDate;
 		this.ownedPolicy = ownedPolicy;
 	}
-
-	
-	
 	
 }

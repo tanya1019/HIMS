@@ -25,10 +25,6 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-
-		 
-	 
-	
 	@PostMapping("/customer")
 	public Customer addCustomer(@RequestBody Customer newCustomer) throws CustomerException {
 		

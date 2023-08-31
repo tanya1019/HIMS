@@ -13,8 +13,8 @@ public class Admin {
 	
 	@Id
 	Integer id;
-	
-	String userName;
+
+	String email;
 	String password;
 	
 	@OneToMany(cascade=CascadeType.ALL)
@@ -23,28 +23,20 @@ public class Admin {
 	@OneToMany(cascade=CascadeType.ALL)
 	List<AdminPolicy> adminPolicies = new ArrayList<>();
 	
-	
-	
-	
-	
 	public Admin(Integer id, String userName, String password, List<Renewal> renewalDetails,
 			List<AdminPolicy> adminPolicies) {
 		super();
 		this.id = id;
-		this.userName = userName;
+		this.email = userName;
 		this.password = password;
 		this.renewalDetails = renewalDetails;
 		this.adminPolicies = adminPolicies;
 	}
-
-
+	
 	public Admin() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
-
+	
 	public List<Renewal> getRenewalDetails() {
 		return renewalDetails;
 	}
@@ -52,7 +44,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", userName=" + userName + ", password=" + password + ", renewalDetails="
+		return "Admin [id=" + id + ", email=" + email + ", password=" + password + ", renewalDetails="
 				+ renewalDetails + ", adminPolicies=" + adminPolicies + "]";
 	}
 
@@ -82,13 +74,13 @@ public class Admin {
 	}
 
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
