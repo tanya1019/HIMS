@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.CustomerException;
+import com.insurance.homeInsurance.exception.PropertyException;
 import com.insurance.homeInsurance.service.PropertyService;
 
 @RestController
@@ -26,7 +27,7 @@ public class PropertyController {
 	}
 	 
 	 @GetMapping("/getProperty/{custId}/{propId}") 
-	 public Property getPropertyByCustomerID(@PathVariable("custId") Integer CustId, @PathVariable("propId") Integer PropId ) throws CustomerException{
+	 public Property getPropertyByCustomerID(@PathVariable("custId") Integer CustId, @PathVariable("propId") Integer PropId ) throws CustomerException, PropertyException{
 	 return this.propertyServices.getPropertyByCustomerID (CustId, PropId);
 
 	 }

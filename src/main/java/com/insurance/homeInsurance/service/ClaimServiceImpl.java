@@ -15,7 +15,9 @@ import com.insurance.homeInsurance.entity.Claim;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
 import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.ClaimException;
-import com.insurance.homeInsurance.exception.CustomerException;
+
+import com.insurance.homeInsurance.exception.OwnedPolicyException;
+import com.insurance.homeInsurance.exception.PropertyException;
 
 
 @Service
@@ -31,7 +33,7 @@ public class ClaimServiceImpl implements ClaimService{
 	OwnedPolicyRepository ownedPolicyRepo;
 
 	@Override
-	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException, CustomerException {
+	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException,PropertyException,OwnedPolicyException {
 		
 		//get property and ownedPolicy data:
 		Optional<Property> propOpt = this.propertyRepo.findById(propId);
@@ -39,14 +41,14 @@ public class ClaimServiceImpl implements ClaimService{
 		
 		//check property is null or not
 		 if(!propOpt.isPresent()) {
-		 throw new CustomerException("Property not found" +propId);
+		 throw new PropertyException("Property not found" +propId);
 		 }
 		 //get property details:
 		 Property property = propOpt.get();
 		 
 		//check policy is null or not
 		 if(!polOpt.isPresent()) {
-			 throw new CustomerException("Policy not found" +polId);
+			 throw new OwnedPolicyException("Policy not found" +polId);
 			 }
 		//get ownedPolicy details:
 		 OwnedPolicy ownedPolicy = polOpt.get();
@@ -65,23 +67,23 @@ public class ClaimServiceImpl implements ClaimService{
 	}
 
 	@Override
-	public Claim getClaimByPolicyIdAndPropertyId(Integer custId, Integer propId, Integer claimId) throws CustomerException {
+	public Claim getClaimByPolicyIdAndPropertyId(Integer custId, Integer propId, Integer claimId) throws ClaimException,PropertyException,OwnedPolicyException {
 		Optional<Property> propOpt = this.propertyRepo.findById(propId);
 		 if (!propOpt.isPresent()) {
-		 throw new CustomerException("Property not found" + propId);
+		 throw new PropertyException("Property not found" + propId);
 		 }
 		 Property property = propOpt.get();
 		 
 		Optional<OwnedPolicy> opolOpt = this.ownedPolicyRepo.findById(propId);
 		 if (!opolOpt.isPresent()) {
-		 throw new CustomerException("owned Policy not found" + propId);
+		 throw new OwnedPolicyException("owned Policy not found" + propId);
 		 }
 		 OwnedPolicy ownedPolicy = opolOpt.get();
 		 
 		 
 		Optional<Claim> claimOpt = this.claimRepo.findById(claimId);
 		 if (!claimOpt.isPresent()) {
-		 throw new CustomerException("Claim not found" + claimOpt);
+		 throw new ClaimException("Claim not found" + claimOpt);
 		 }
 		 Claim claim = claimOpt.get();
 		 

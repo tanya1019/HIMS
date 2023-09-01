@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.insurance.homeInsurance.entity.Claim;
 
 import com.insurance.homeInsurance.exception.ClaimException;
-import com.insurance.homeInsurance.exception.CustomerException;
+
+import com.insurance.homeInsurance.exception.OwnedPolicyException;
+import com.insurance.homeInsurance.exception.PropertyException;
 import com.insurance.homeInsurance.service.ClaimService;
 
 
@@ -23,7 +25,7 @@ public class ClaimController {
 	ClaimService claimService;
 	
 	@PostMapping("/createClaim/{policyId}/{propertyId}")
-	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, CustomerException {
+	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, PropertyException, OwnedPolicyException {
 		
 		try {
 			return this.claimService.createClaimByPolicyIdAndPropertyId(newClaim,PropId,PolId);
@@ -44,7 +46,7 @@ public class ClaimController {
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping("/getClaim/{propId}/{polId}")
-	public Collection<Claim> getClaimByPolicyIdAndCustomerId(@PathVariable("claimId") Integer ClaimId ,@PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, CustomerException {
+	public Collection<Claim> getClaimByPolicyIdAndCustomerId(@PathVariable("claimId") Integer ClaimId ,@PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, PropertyException, OwnedPolicyException {
 		
 		return (Collection<Claim>) this.claimService.getClaimByPolicyIdAndPropertyId(PropId,PolId, ClaimId);
 		
