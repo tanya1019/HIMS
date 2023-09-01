@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.insurance.homeInsurance.entity.Claim;
-import com.insurance.homeInsurance.entity.OwnedPolicy;
-import com.insurance.homeInsurance.entity.Property;
-import com.insurance.homeInsurance.exception.CustomerException;
+
+import com.insurance.homeInsurance.exception.ClaimException;
+
+import com.insurance.homeInsurance.exception.OwnedPolicyException;
+import com.insurance.homeInsurance.exception.PropertyException;
 import com.insurance.homeInsurance.service.ClaimService;
 
 @SpringBootTest
@@ -26,16 +28,9 @@ public class ClaimTest {
 //	}
 	
 	@Test
-	public void getClaimByPolicyIdAndCustomerIdTest() {
-		try {
-			Claim claim = this.claimService.getClaimByPolicyIdAndPropertyId(1, 1, 1);
-			assertEquals(1, claim.getId());
-
-			
-		} catch (CustomerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void getClaimByPolicyIdAndCustomerIdTest() throws ClaimException, PropertyException, OwnedPolicyException {
+		Claim claim = this.claimService.getClaimByPolicyIdAndPropertyId(1, 1, 1);
+		assertEquals(1, claim.getId());
 		
 	}
 

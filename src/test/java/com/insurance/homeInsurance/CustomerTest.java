@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.insurance.homeInsurance.dto.loginDto;
 import com.insurance.homeInsurance.entity.Customer;
-import com.insurance.homeInsurance.entity.PropertyType;
+
 import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.service.CustomerService;
 
