@@ -12,6 +12,7 @@ import com.insurance.homeInsurance.dao.PropertyRepository;
 import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.CustomerException;
+import com.insurance.homeInsurance.exception.PropertyException;
 
 @Service
 
@@ -37,8 +38,10 @@ public class PropertyServiceImpl implements PropertyService {
 	 this.customerRepo.save(customer);
 	 return property;
 	 }
+	 
+	 
 	 @Override
-	 public Property getPropertyByCustomerID(Integer CustId, Integer propId) throws CustomerException {
+	 public Property getPropertyByCustomerID(Integer CustId, Integer propId) throws CustomerException, PropertyException {
 	 Optional<Customer> custOpt = this.customerRepo.findById(CustId);
 	 if (!custOpt.isPresent()) {
 	 throw new CustomerException("Customer not found" + CustId);
@@ -47,7 +50,7 @@ public class PropertyServiceImpl implements PropertyService {
 	
 	 Optional<Property> propertyOpt = this.propertyRepo.findById(propId);
 	 if (!propertyOpt.isPresent()) {
-	 throw new CustomerException("property not found" + propertyOpt);
+	 throw new PropertyException("property not found" + propertyOpt);
 	 }
 	 Property property = propertyOpt.get();
 	 
@@ -68,8 +71,6 @@ public class PropertyServiceImpl implements PropertyService {
 		List<Property> propsDetail = customer.getPropertyDetails();
 		 
 		 return propsDetail;
-		
-		
 	}
 
 }

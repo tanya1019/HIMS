@@ -64,7 +64,7 @@ public class FeatureServiceImpl implements FeatureService {
 
 	@Override
 	public Feature deleteFeatureById(Integer id) throws FeatureException {
-		// TODO Auto-generated method stub
+
 		Optional<Feature> FeatureOpt = this.featureRepo.findById(id);
 		
 		if(!FeatureOpt.isPresent()) {

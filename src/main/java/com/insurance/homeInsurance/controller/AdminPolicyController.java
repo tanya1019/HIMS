@@ -16,13 +16,13 @@ public class AdminPolicyController {
 	@Autowired
 	AdminPolicyService adminPolicyService;
 
-	@PostMapping("/adminPolicy")
+	@PostMapping("/createAdminPolicy")
     public AdminPolicy createAdminPolicy(@RequestBody AdminPolicy newAdminPolicy) {
         return this.adminPolicyService.createAdminPolicy(newAdminPolicy);
     }
 
     
-    @GetMapping("/adminPolicy/{id}")
+    @GetMapping("/getAdminPolicy/{id}")
     public AdminPolicy getAdminPolicyById(@PathVariable("id") Integer id) {
         AdminPolicy adminGet = this.adminPolicyService.getPolicyById(id);
         return adminGet;

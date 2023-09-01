@@ -24,7 +24,7 @@ public class CustomerTest {
 	@Test
 	public void addCustomerTest() {
 		System.out.println("addCustomerTest");
-		Customer newCustomer = new Customer(10,"1567","cust1@gmail.com","cust1Name","cust1Pass",PropertyType.Owned,"123Stripe",null,null);
+		Customer newCustomer = new Customer();
 		
 			try {
 				assertEquals(true, this.custService.addCustomer(newCustomer));
