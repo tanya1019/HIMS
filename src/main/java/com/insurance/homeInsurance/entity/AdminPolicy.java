@@ -35,20 +35,23 @@ public class AdminPolicy {
 	public AdminPolicy() {
 		super();
 	}
-	public AdminPolicy(Integer id, String policyName, String policyDescription, Integer policyDuration,
-			Double premiumAmount, Boolean customPolicy, Integer propertyAmount, List<Feature> features) {
+
+	public List<Feature> getFeatures() {
+		return features;
+	}
+	public AdminPolicy(Integer id, String policyName, String policyDescription, Integer policyDuration) {
+	super();
+	this.id = id;
+	this.policyName = policyName;
+	this.policyDescription = policyDescription;
+	this.policyDuration = policyDuration;
+}
+	public AdminPolicy(Double premiumAmount, Boolean customPolicy, Integer propertyAmount, List<Feature> features) {
 		super();
-		this.id = id;
-		this.policyName = policyName;
-		this.policyDescription = policyDescription;
-		this.policyDuration = policyDuration;
 		this.premiumAmount = premiumAmount;
 		this.customPolicy = customPolicy;
 		this.propertyAmount = propertyAmount;
 		this.features = features;
-	}
-	public List<Feature> getFeatures() {
-		return features;
 	}
 	public void setFeatures(List<Feature> features) {
 		this.features = features;

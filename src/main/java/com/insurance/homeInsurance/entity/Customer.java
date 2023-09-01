@@ -42,11 +42,29 @@ public class Customer {
 	
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 
-	
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", contactNumber=" + contactNumber + ", email=" + email + ", name=" + name
+				+ ", password=" + password + ", propertType=" + propertType + ", stripeId=" + stripeId
+				+ ", ownedPolicy=" + ownedPolicy + ", propertyDetails=" + propertyDetails + "]";
+	}
+
+
+
+
+
+	public Customer(Integer id, String contactNumber, String email, String name, String password) {
+	super();
+	this.id = id;
+	this.contactNumber = contactNumber;
+	this.email = email;
+	this.name = name;
+	this.password = password;
+}
 
 
 
@@ -55,14 +73,10 @@ public class Customer {
 
 
 
-	public Customer(Integer id, String contactNumber, String email, String name, String password,
-			PropertyType propertType, String stripeId, List<OwnedPolicy> ownedPolicy, List<Property> propertyDetails) {
+
+	public Customer(PropertyType propertType, String stripeId, List<OwnedPolicy> ownedPolicy,
+			List<Property> propertyDetails) {
 		super();
-		this.id = id;
-		this.contactNumber = contactNumber;
-		this.email = email;
-		this.name = name;
-		this.password = password;
 		this.propertType = propertType;
 		this.stripeId = stripeId;
 		this.ownedPolicy = ownedPolicy;
@@ -72,19 +86,6 @@ public class Customer {
 
 
 
-
-
-
-
-
-
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", contactNumber=" + contactNumber + ", email=" + email + ", name=" + name
-				+ ", password=" + password + ", propertType=" + propertType + ", stripeId=" + stripeId
-				+ ", ownedPolicy=" + ownedPolicy + ", propertyDetails=" + propertyDetails + "]";
-	}
 
 
 

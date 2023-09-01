@@ -73,30 +73,30 @@ public class Claim {
 	
 	public Claim() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-
-	public Claim(Integer id, LocalDate claimedDate, String[] documentProof, String causeOfClaim, Double claimableAmount,
-			String claimType, LocalDate dateOfIncident, OwnedPolicy ownedPolicyDetails, Property propertyDetails) {
-		super();
-		this.id = id;
-		this.claimedDate = claimedDate;
-		this.documentProof = documentProof;
-		this.causeOfClaim = causeOfClaim;
-		this.claimableAmount = claimableAmount;
-		this.claimType = claimType;
-		this.dateOfIncident = dateOfIncident;
-		this.ownedPolicyDetails = ownedPolicyDetails;
-		this.propertyDetails = propertyDetails;
 	}
 
 
 	public Integer getId() {
 		return id;
+	}
+
+
+	public Claim(Integer id, LocalDate claimedDate, String[] documentProof, String causeOfClaim, Double claimableAmount) {
+	super();
+	this.id = id;
+	this.claimedDate = claimedDate;
+	this.documentProof = documentProof;
+	this.causeOfClaim = causeOfClaim;
+	this.claimableAmount = claimableAmount;
+}
+
+
+	public Claim(String claimType, LocalDate dateOfIncident, OwnedPolicy ownedPolicyDetails, Property propertyDetails) {
+		super();
+		this.claimType = claimType;
+		this.dateOfIncident = dateOfIncident;
+		this.ownedPolicyDetails = ownedPolicyDetails;
+		this.propertyDetails = propertyDetails;
 	}
 
 
