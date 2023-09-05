@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.CustomerException;
+import com.insurance.homeInsurance.exception.PropertyException;
 import com.insurance.homeInsurance.service.PropertyService;
 
 @RestController

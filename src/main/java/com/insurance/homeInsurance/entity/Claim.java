@@ -36,6 +36,8 @@ public class Claim {
 	@OneToOne(cascade=CascadeType.ALL)
 	Property propertyDetails;
 	
+	
+	
 	public LocalDate getDateOfIncident() {
 		return dateOfIncident;
 	}
@@ -65,19 +67,24 @@ public class Claim {
 		this.propertyDetails = propertyDetails;
 	}
 
-
-	
-	
-	
-	
-	
-	public Claim() {
-		super();
+	public Double getClaimRequestAmount() {
+		return claimRequestAmount;
 	}
 
 
-	 
+	public void setClaimRequestAmount(Double claimRequestAmount) {
+		this.claimRequestAmount = claimRequestAmount;
+	}
 
+
+	public Boolean getClaimReviewed() {
+		return claimReviewed;
+	}
+
+
+	public void setClaimReviewed(Boolean claimReviewed) {
+		this.claimReviewed = claimReviewed;
+	}
 
 	public Integer getId() {
 		return id;
@@ -115,7 +122,6 @@ public class Claim {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public LocalDate getClaimedDate() {
 		return claimedDate;
@@ -157,14 +163,38 @@ public class Claim {
 	}
 
 
-	public String getClaimType() {
-		return claimType;
+	
+	public Claim() {
+		super();
+	}
+
+	public Claim(Integer id, LocalDate claimedDate, String[] documentProof, String causeOfClaim, Double claimableAmount,
+			Double claimRequestAmount, Boolean claimReviewed, LocalDate dateOfIncident, OwnedPolicy ownedPolicyDetails,
+			Property propertyDetails) {
+		super();
+		this.id = id;
+		this.claimedDate = claimedDate;
+		this.documentProof = documentProof;
+		this.causeOfClaim = causeOfClaim;
+		this.claimableAmount = claimableAmount;
+		this.claimRequestAmount = claimRequestAmount;
+		this.claimReviewed = claimReviewed;
+		this.dateOfIncident = dateOfIncident;
+		this.ownedPolicyDetails = ownedPolicyDetails;
+		this.propertyDetails = propertyDetails;
 	}
 
 
-	public void setClaimType(String claimType) {
-		this.claimType = claimType;
+	@Override
+	public String toString() {
+		return "Claim [id=" + id + ", claimedDate=" + claimedDate + ", documentProof=" + Arrays.toString(documentProof)
+				+ ", causeOfClaim=" + causeOfClaim + ", claimableAmount=" + claimableAmount + ", claimRequestAmount="
+				+ claimRequestAmount + ", claimReviewed=" + claimReviewed + ", dateOfIncident=" + dateOfIncident
+				+ ", ownedPolicyDetails=" + ownedPolicyDetails + ", propertyDetails=" + propertyDetails + "]";
 	}
+
+
+	
 	
 	
 	

@@ -10,8 +10,8 @@ import com.insurance.homeInsurance.dao.CustomerRepository;
 import com.insurance.homeInsurance.dao.OwnedPolicyRepository;
 import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
+import com.insurance.homeInsurance.exception.CustomerException;
 
-import com.insurance.homeInsurance.exception.OwnedPolicyException;
 @Service
 public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 
@@ -23,10 +23,10 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	
 		@Override
 		public OwnedPolicy createOwnedPolicyByCustomerId(OwnedPolicy newOwnedPolicy, Integer CustId)
-			throws OwnedPolicyException {
+			throws CustomerException {
 	        Optional<Customer> custOpt = this.customerRepo.findById(CustId);
 	         if(!custOpt.isPresent()) {
-	           throw new OwnedPolicyException("Customer not found" +CustId);
+	           throw new CustomerException("Customer not found" +CustId);
 	         }
 
 	         Customer customer = custOpt.get();
@@ -40,7 +40,7 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 		public List<OwnedPolicy> getAllOwnedPoliciesByCustomerId(Integer CustId) throws OwnedPolicyException {
 			Optional<Customer> custOpt = this.customerRepo.findById(CustId);
 	         if(!custOpt.isPresent()) {
-	          throw new OwnedPolicyException("Customer not found" +CustId);
+	          throw new CustomerException("Customer not found" +CustId);
 	         }
 	        Customer customer = custOpt.get();
 	        List<OwnedPolicy> getAllPolicies = customer.getOwnedPolicy();       

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.insurance.homeInsurance.entity.Claim;
 
 import com.insurance.homeInsurance.exception.ClaimException;
-import com.insurance.homeInsurance.exception.CustomerException;
+
+import com.insurance.homeInsurance.exception.OwnedPolicyException;
+import com.insurance.homeInsurance.exception.PropertyException;
 import com.insurance.homeInsurance.service.ClaimService;
 
 
@@ -22,8 +24,15 @@ public class ClaimController {
 	@Autowired
 	private ClaimService claimService;
 	
+<<<<<<< HEAD
 	@PostMapping("/claim/{policyId}/{propertyId}")
 	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, CustomerException {
+=======
+	@PostMapping("/createClaim/{policyId}/{propertyId}")
+	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, PropertyException, OwnedPolicyException {
+		
+		try {
+>>>>>>> f88d4d1e4c0e197d31b59d033717fb0c38399b38
 			return this.claimService.createClaimByPolicyIdAndPropertyId(newClaim,PropId,PolId);
 	}
 	

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.insurance.homeInsurance.dto.loginDto;
 import com.insurance.homeInsurance.entity.Admin;
+import com.insurance.homeInsurance.exception.AdminException;
 
-import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.service.AdminService;
 
 @RestController

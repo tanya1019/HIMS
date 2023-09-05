@@ -1,6 +1,6 @@
 package com.insurance.homeInsurance.service;
 
-import java.time.LocalDate;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,5 @@ public class RenewalServiceImpl implements RenewalService{
 	private RenewalRepository renewalRepo;
 	
 	
-	@Override
-	public void setRenewalDate(LocalDate date) {
-	}
 
 }

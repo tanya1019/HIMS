@@ -34,7 +34,7 @@ public String getGreeting() {
 
 @PostMapping("/ownedpolicy/{id}")
 
- public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("id") Integer id) throws OwnedPolicyException {
+ public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("id") Integer id) throws CustomerException {
 
  return this.ownedPolicyService.createOwnedPolicyByCustomerId(ownedPolicy, id) ;
 
@@ -44,7 +44,7 @@ public String getGreeting() {
 
 @GetMapping("/allownedpolicies/{custId}")
 
- public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws OwnedPolicyException{
+ public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
 
  return this.ownedPolicyService.getAllOwnedPoliciesByCustomerId(CustId);
 
