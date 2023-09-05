@@ -16,13 +16,13 @@ public class Renewal {
 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
-	Integer id;
+	private Integer id;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate renewalDate;
+	private LocalDate renewalDate;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	OwnedPolicy ownedPolicy;
+	private OwnedPolicy ownedPolicy;
 
 	public Integer getId() {
 		return id;
@@ -46,11 +46,6 @@ public class Renewal {
 
 	public void setOwnedPolicy(OwnedPolicy ownedPolicy) {
 		this.ownedPolicy = ownedPolicy;
-	}
-
-	@Override
-	public String toString() {
-		return "Renewal [id=" + id + ", renewalDate=" + renewalDate + ", ownedPolicy=" + ownedPolicy + "]";
 	}
 
 	public Renewal() {

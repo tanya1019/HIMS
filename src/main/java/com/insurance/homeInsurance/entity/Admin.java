@@ -11,17 +11,18 @@ import javax.persistence.OneToMany;
 @Entity
 public class Admin {
 	
+	//Data Members--Private 
 	@Id
-	Integer id;
+	private Integer id;
 
-	String email;
-	String password;
+	private String email;
+	private String password;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	List<Renewal> renewalDetails = new ArrayList<>();
+	private List<Renewal> renewalDetails = new ArrayList<>();
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	List<AdminPolicy> adminPolicies = new ArrayList<>();
+	private List<AdminPolicy> adminPolicies = new ArrayList<>();
 	
 	public Admin(Integer id, String userName, String password, List<Renewal> renewalDetails,
 			List<AdminPolicy> adminPolicies) {
@@ -40,14 +41,6 @@ public class Admin {
 	public List<Renewal> getRenewalDetails() {
 		return renewalDetails;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Admin [id=" + id + ", email=" + email + ", password=" + password + ", renewalDetails="
-				+ renewalDetails + ", adminPolicies=" + adminPolicies + "]";
-	}
-
 
 	public void setRenewalDetails(List<Renewal> renewalDetails) {
 		this.renewalDetails = renewalDetails;

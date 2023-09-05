@@ -7,6 +7,8 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -15,25 +17,26 @@ import javax.persistence.OneToMany;
 public class Customer {
 	
 	@Id
-	Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	
-	String contactNumber;
-	String email;
-	String name;
+	private String contactNumber;
+	private String email;
+	private String name;
 	
 	@Column(nullable = false)
-	String password;
+	private String password;
 	
-	PropertyType propertType;
+	private PropertyType propertType;
 	
-	String stripeId;
+	private String stripeId;
 	
-	
-	@OneToMany(cascade = {CascadeType.ALL})
-	List<OwnedPolicy> ownedPolicy = new ArrayList<>();
 	
 	@OneToMany(cascade = {CascadeType.ALL})
-	List<Property> propertyDetails = new ArrayList<>();
+	private List<OwnedPolicy> ownedPolicy = new ArrayList<>();
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	private List<Property> propertyDetails = new ArrayList<>();
 	
 	
 	
@@ -43,18 +46,6 @@ public class Customer {
 		super();
 	
 	}
-
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", contactNumber=" + contactNumber + ", email=" + email + ", name=" + name
-				+ ", password=" + password + ", propertType=" + propertType + ", stripeId=" + stripeId
-				+ ", ownedPolicy=" + ownedPolicy + ", propertyDetails=" + propertyDetails + "]";
-	}
-
-
-
-
 
 	public Customer(Integer id, String contactNumber, String email, String name, String password) {
 	super();

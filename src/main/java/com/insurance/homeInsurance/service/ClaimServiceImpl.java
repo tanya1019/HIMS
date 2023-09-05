@@ -22,13 +22,13 @@ import com.insurance.homeInsurance.exception.CustomerException;
 public class ClaimServiceImpl implements ClaimService{
 	
 	@Autowired
-	ClaimRepository claimRepo;
+	private ClaimRepository claimRepo;
 	
 	@Autowired
-	PropertyRepository propertyRepo;
+	private PropertyRepository propertyRepo;
 	
 	@Autowired
-	OwnedPolicyRepository ownedPolicyRepo;
+	private OwnedPolicyRepository ownedPolicyRepo;
 
 	@Override
 	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException, CustomerException {
@@ -92,7 +92,7 @@ public class ClaimServiceImpl implements ClaimService{
 	}
 
 	@Override
-	public Collection<Claim> getAllClaim() {
+	public Collection<Claim> getAllClaims() {
 		return this.claimRepo.findAll();
 	}
 	

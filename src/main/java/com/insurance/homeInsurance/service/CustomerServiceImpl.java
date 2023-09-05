@@ -18,7 +18,7 @@ import com.insurance.homeInsurance.exception.CustomerException;
 public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
-	CustomerRepository customerRepo;
+	private CustomerRepository customerRepo;
 
 	@Override
 	public Customer addCustomer(Customer newCustomer) throws CustomerException {
@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Collection<Customer> getAllCustomer() {
+	public Collection<Customer> getAllCustomers() {
 		//created by Anish
 		//get all features 
 		

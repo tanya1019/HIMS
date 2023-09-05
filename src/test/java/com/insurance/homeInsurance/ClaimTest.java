@@ -3,13 +3,14 @@ package com.insurance.homeInsurance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.insurance.homeInsurance.entity.Claim;
-import com.insurance.homeInsurance.entity.OwnedPolicy;
-import com.insurance.homeInsurance.entity.Property;
+import com.insurance.homeInsurance.exception.ClaimException;
 import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.service.ClaimService;
 
@@ -17,25 +18,27 @@ import com.insurance.homeInsurance.service.ClaimService;
 public class ClaimTest {
 	
 	@Autowired
-	ClaimService claimService;
-	
-//	@Test
-//	public void createClaimByPolicyIdAndPropertyIdTest() {
-//		Claim claim1 = new Claim(1,"2001-11-02",["docs","docs1"],"cause1",8000.0,"debit","2001-11-02",new OwnedPolicy(1,null,null,null,8,"reln",false,null,null,null,null),new Property(1,81,null,null,null,null,null,null,null,null,false,null,null,null));
-//		Claim claim = this.claimService.createClaimByPolicyIdAndPropertyId(1, 1, 1);
-//	}
+	private ClaimService claimService;
 	
 	@Test
-	public void getClaimByPolicyIdAndCustomerIdTest() {
-		try {
+	public void createClaimByPolicyIdAndPropertyIdTest() throws ClaimException, CustomerException {
+		Claim claim = new Claim(19,LocalDate.of(2019, 8, 15),"Cause1",1234.00);
+		assertEquals(true,this.claimService.createClaimByPolicyIdAndPropertyId(claim, 11, 17));
+	}
+	
+	@Test
+	public void getClaimByPolicyIdAndCustomerIdTest() throws CustomerException {
 			Claim claim = this.claimService.getClaimByPolicyIdAndPropertyId(1, 1, 1);
 			assertEquals(1, claim.getId());
+	}
+	
+	@Test
+	public void getAllClaimsTest() throws ClaimException, CustomerException {
+		this.claimService.createClaimByPolicyIdAndPropertyId(new Claim(19,LocalDate.of(2019, 8, 15),"Cause1",1234.00), 11, 17);
+		this.claimService.createClaimByPolicyIdAndPropertyId(new Claim(20,LocalDate.of(2020, 9, 20),"Cause2",4534.00), 23, 18);
+		this.claimService.createClaimByPolicyIdAndPropertyId(new Claim(21,LocalDate.of(2023, 12, 30),"Cause3",2234.00), 34, 19);
 
-			
-		} catch (CustomerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		assertEquals(3,this.claimService.getAllClaims().size());
 		
 	}
 

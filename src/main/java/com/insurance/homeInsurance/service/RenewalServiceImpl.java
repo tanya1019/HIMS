@@ -12,10 +12,10 @@ import com.insurance.homeInsurance.dao.RenewalRepository;
 public class RenewalServiceImpl implements RenewalService{
 
 	@Autowired
-	OwnedPolicyRepository ownedPolicyRepo;
+	private OwnedPolicyRepository ownedPolicyRepo;
 	
 	@Autowired
-	RenewalRepository renewalRepo;
+	private RenewalRepository renewalRepo;
 	
 	
 	@Override

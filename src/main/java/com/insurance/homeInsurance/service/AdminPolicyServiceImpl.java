@@ -11,7 +11,7 @@ import com.insurance.homeInsurance.entity.AdminPolicy;
 public class AdminPolicyServiceImpl implements AdminPolicyService {
 	
 	@Autowired
-    AdminPolicyRepository adminPolicyRepo;
+	private AdminPolicyRepository adminPolicyRepo;
 
 	
 	@Override

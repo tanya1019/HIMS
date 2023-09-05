@@ -18,10 +18,10 @@ import com.insurance.homeInsurance.exception.CustomerException;
 public class PropertyServiceImpl implements PropertyService {
 	
 	@Autowired
-	 PropertyRepository propertyRepo;
+	private PropertyRepository propertyRepo;
 
 	 @Autowired
-	 CustomerRepository customerRepo;
+	 private CustomerRepository customerRepo;
 
 	 @Override
 	 public Property createPropertyByCustomerID(Property newProperty, Integer custId) throws CustomerException {
@@ -37,6 +37,8 @@ public class PropertyServiceImpl implements PropertyService {
 	 this.customerRepo.save(customer);
 	 return property;
 	 }
+	 
+	 
 	 @Override
 	 public Property getPropertyByCustomerID(Integer CustId, Integer propId) throws CustomerException {
 	 Optional<Customer> custOpt = this.customerRepo.findById(CustId);

@@ -20,11 +20,11 @@ import com.insurance.homeInsurance.exception.FeatureException;
 public class FeatureServiceImpl implements FeatureService {
 
 	@Autowired
-	FeatureRepository featureRepo;
+	private FeatureRepository featureRepo;
 	
 	
 	@Autowired
-	OwnedPolicyRepository ownedPolicyRepo;
+	private OwnedPolicyRepository ownedPolicyRepo;
 	
 
 	
@@ -55,7 +55,7 @@ public class FeatureServiceImpl implements FeatureService {
 	
 	
 	@Override
-	public Collection<Feature> getAllFeature() {
+	public Collection<Feature> getAllFeatures() {
 		//created by Anish
 		//get all features 
 		return this.featureRepo.findAll();

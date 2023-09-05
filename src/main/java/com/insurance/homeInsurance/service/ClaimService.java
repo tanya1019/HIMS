@@ -8,7 +8,7 @@ import com.insurance.homeInsurance.exception.CustomerException;
 
 public interface ClaimService {
 
-	Collection<Claim> getAllClaim();
+	Collection<Claim> getAllClaims();
 	Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException, CustomerException;
 
 	Claim getClaimByPolicyIdAndPropertyId(Integer custId, Integer propId, Integer claimId) throws CustomerException;

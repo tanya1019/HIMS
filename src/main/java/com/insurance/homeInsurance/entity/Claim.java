@@ -17,15 +17,15 @@ public class Claim {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	Integer id;
+	private Integer id;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate claimedDate;
+	private LocalDate claimedDate;
 	
-	String [] documentProof;
-	String causeOfClaim;
-	Double claimableAmount;
-	String claimType = "debit";
+	private String [] documentProof;
+	private String causeOfClaim;
+	private Double claimableAmount;
+	private String claimType = "debit";
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
 	LocalDate dateOfIncident;
@@ -93,6 +93,15 @@ public class Claim {
 	this.claimableAmount = claimableAmount;
 }
 
+	public Claim(Integer id, LocalDate claimedDate, String causeOfClaim, Double claimableAmount) {
+		super();
+		this.id = id;
+		this.claimedDate = claimedDate;
+		this.documentProof = documentProof;
+		this.causeOfClaim = causeOfClaim;
+		this.claimableAmount = claimableAmount;
+	}
+
 
 	public Claim(String claimType, LocalDate dateOfIncident, OwnedPolicy ownedPolicyDetails, Property propertyDetails) {
 		super();
@@ -105,15 +114,6 @@ public class Claim {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Claim [id=" + id + ", claimedDate=" + claimedDate + ", documentProof=" + Arrays.toString(documentProof)
-				+ ", causeOfClaim=" + causeOfClaim + ", claimableAmount=" + claimableAmount + ", claimType=" + claimType
-				+ ", dateOfIncident=" + dateOfIncident + ", ownedPolicyDetails=" + ownedPolicyDetails
-				+ ", propertyDetails=" + propertyDetails + "]";
 	}
 
 

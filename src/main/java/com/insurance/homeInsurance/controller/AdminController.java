@@ -1,4 +1,4 @@
-package com.insurance.homeinsurance.controller;
+package com.insurance.homeInsurance.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,30 +17,19 @@ import com.insurance.homeInsurance.service.AdminService;
 public class AdminController {
 
 	@Autowired
-	AdminService adminService;
+	private AdminService adminService;
 	
-	@PostMapping("/addAdmin")
+	@PostMapping("/admin")
 	public Admin addAdmin(@RequestBody Admin newAdmin) throws CustomerException {
-		
-		try {
-			return this.adminService.addAdmin(newAdmin);
-		}catch (CustomerException e) {
-			throw e;
-		}
-		
+		return this.adminService.addAdmin(newAdmin);
 	}
 	
 	@GetMapping("/admin/{id}")
 	 public Admin getCustomerById(@PathVariable("id") Integer id) throws CustomerException {
-
-		 try{
 			 return this.adminService.getAdminById(id);
-		}catch (CustomerException e) {
-				throw e;
-		} 
 	 }
 	
-	@PostMapping("/adminLogin")
+	@PostMapping("/adminlogin")
 	 public Boolean login(@RequestBody loginDto login) throws CustomerException {
 
 		 return this.adminService.adminLogin(login);

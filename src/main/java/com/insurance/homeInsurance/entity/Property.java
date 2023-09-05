@@ -15,32 +15,45 @@ public class Property {
 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
-	Integer propId;
-	Integer custId;
-	String houseNo;
-	Double areaInSquareFeet;
-	Double costOfProperty;
-	Double ageOfBuilding;
-    Integer pincode;
-    String  city;
-	String  streetNumber;
-	String  region;
-	Boolean policyClaimed = false;
+	private Integer propId;
+	
+	private Integer custId;
+	private String houseNo;
+	private Double areaInSquareFeet;
+	private Double costOfProperty;
+	private Double ageOfBuilding;
+	private Integer pincode;
+	private String  city;
+	private String  streetNumber;
+	private String  region;
+	private Boolean policyClaimed = false;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JsonIgnore
-	Customer customer;
+	private Customer customer;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	OwnedPolicy ownedPolicy;
+	private OwnedPolicy ownedPolicy;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	Claim claim ;
+	private Claim claim ;
 	
 	public Property() {
 		super();
 	}
 	
+
+	
+
+	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty) {
+		super();
+		this.propId = propId;
+		this.houseNo = houseNo;
+		this.areaInSquareFeet = areaInSquareFeet;
+		this.costOfProperty = costOfProperty;
+	}
+
+
 
 
 	public Property(Integer propId, Integer custId, String houseNo, Double areaInSquareFeet, Double costOfProperty,
@@ -162,14 +175,7 @@ public class Property {
 		this.claim = claim;
 	}
 
-	@Override
-	public String toString() {
-		return "Property [propId=" + propId + ", custId=" + custId + ", houseNo=" + houseNo + ", areaInSquareFeet="
-				+ areaInSquareFeet + ", costOfProperty=" + costOfProperty + ", ageOfBuilding=" + ageOfBuilding
-				+ ", pincode=" + pincode + ", city=" + city + ", streetNumber=" + streetNumber + ", region=" + region
-				+ ", policyClaimed=" + policyClaimed + ", customer=" + customer + ", ownedPolicy=" + ownedPolicy
-				+ ", claim=" + claim + "]";
-	}
+	
 	
 	
 	

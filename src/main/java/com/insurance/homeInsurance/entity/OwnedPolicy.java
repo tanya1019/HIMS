@@ -23,51 +23,54 @@ public class OwnedPolicy {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	Integer id;
+	private Integer id;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate issueDate;
+	private LocalDate issueDate;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate expiryDate;
+	private LocalDate expiryDate;
 	
-	String nomineeName;
-	Integer nomineeAge;
-	String nomineeRelation;
-	Boolean customePolicy = false;
+	private String nomineeName;
+	private Integer nomineeAge;
+	private String nomineeRelation;
+	private Boolean customePolicy = false;
 	
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	AdminPolicy adminPolicy;
+	private AdminPolicy adminPolicy;
 	
 	@ManyToOne (cascade=CascadeType.ALL)
 	@JsonIgnore
-	Customer customer;
+	private Customer customer;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonIgnore
-	Payment paymentDetails;
+	private Payment paymentDetails;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	Claim claim;
+	private Claim claim;
 	
 
-	public OwnedPolicy(Integer id, LocalDate issueDate, LocalDate expiryDate, String nomineeName, Integer nomineeAge,
-			String nomineeRelation, Boolean customePolicy, AdminPolicy adminPolicy, Customer customer,
-			Payment paymentDetails, Claim claim) {
+	public OwnedPolicy(LocalDate issueDate, LocalDate expiryDate, String nomineeName, Integer nomineeAge,
+			String nomineeRelation) {
 		super();
-		this.id = id;
 		this.issueDate = issueDate;
 		this.expiryDate = expiryDate;
 		this.nomineeName = nomineeName;
 		this.nomineeAge = nomineeAge;
 		this.nomineeRelation = nomineeRelation;
-		this.customePolicy = customePolicy;
+	}
+
+	
+	public OwnedPolicy(AdminPolicy adminPolicy, Customer customer, Payment paymentDetails, Claim claim) {
+		super();
 		this.adminPolicy = adminPolicy;
 		this.customer = customer;
 		this.paymentDetails = paymentDetails;
 		this.claim = claim;
 	}
+
 
 	public Claim getClaim(Claim claim) {
 		return claim;
@@ -161,14 +164,6 @@ public class OwnedPolicy {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "OwnedPolicy [id=" + id + ", issueDate=" + issueDate + ", expiryDate=" + expiryDate + ", nomineeName="
-				+ nomineeName + ", nomineeAge=" + nomineeAge + ", nomineeRelation=" + nomineeRelation
-				+ ", customePolicy=" + customePolicy + ", adminPolicy=" + adminPolicy + ", customer=" + customer
-				+ ", paymentDetails=" + paymentDetails + ", claim=" + claim + "]";
-	}
-	
 
 	
 }

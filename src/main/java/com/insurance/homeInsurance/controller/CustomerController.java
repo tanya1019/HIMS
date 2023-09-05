@@ -23,23 +23,17 @@ import com.insurance.homeInsurance.service.CustomerService;
 public class CustomerController {
 	
 	@Autowired
-	CustomerService customerService;
+	private CustomerService customerService;
 	
 	@PostMapping("/customer")
 	public Customer addCustomer(@RequestBody Customer newCustomer) throws CustomerException {
-		
-		try {
-			
-			return this.customerService.addCustomer(newCustomer);
-		}catch (CustomerException e) {
-			throw e;
-		}
+		return this.customerService.addCustomer(newCustomer);
 		
 	}
 	
-	@GetMapping("/getAllCustomer")
+	@GetMapping("/allcustomers")
 	public Collection<Customer> getAllCustomer() {
-		return this.customerService.getAllCustomer();
+		return this.customerService.getAllCustomers();
 	}
 	
 	

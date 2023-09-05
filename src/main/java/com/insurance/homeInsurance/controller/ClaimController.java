@@ -20,30 +20,25 @@ import com.insurance.homeInsurance.service.ClaimService;
 public class ClaimController {
 	
 	@Autowired
-	ClaimService claimService;
+	private ClaimService claimService;
 	
-	@PostMapping("/createClaim/{policyId}/{propertyId}")
+	@PostMapping("/claim/{policyId}/{propertyId}")
 	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, CustomerException {
-		
-		try {
 			return this.claimService.createClaimByPolicyIdAndPropertyId(newClaim,PropId,PolId);
-		}catch (ClaimException e) {
-			throw e;
-		}	
 	}
 	
-	@GetMapping("/getAllClaim")
-	public Collection<Claim> getAllClaim() {
-		return this.claimService.getAllClaim();
+	@GetMapping("/AllClaim")
+	public Collection<Claim> getAllClaims() {
+		return this.claimService.getAllClaims();
 	}
 //	getClaimByPolicyId
 //	getClaimByCustomerId
 //	getAllClaimsByCustomerId
-	
+	//update claim
 	
 	
 	@SuppressWarnings("unchecked")
-	@GetMapping("/getClaim/{propId}/{polId}")
+	@GetMapping("/claim/{propId}/{polId}")
 	public Collection<Claim> getClaimByPolicyIdAndCustomerId(@PathVariable("claimId") Integer ClaimId ,@PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, CustomerException {
 		
 		return (Collection<Claim>) this.claimService.getClaimByPolicyIdAndPropertyId(PropId,PolId, ClaimId);

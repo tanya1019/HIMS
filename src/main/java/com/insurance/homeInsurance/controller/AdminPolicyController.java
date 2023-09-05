@@ -14,7 +14,7 @@ import com.insurance.homeInsurance.service.AdminPolicyService;
 public class AdminPolicyController {
 	
 	@Autowired
-	AdminPolicyService adminPolicyService;
+	private AdminPolicyService adminPolicyService;
 
 	@PostMapping("/adminPolicy")
     public AdminPolicy createAdminPolicy(@RequestBody AdminPolicy newAdminPolicy) {

@@ -18,13 +18,13 @@ import com.insurance.homeInsurance.exception.OwnedPolicyException;
 public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
-	PaymentRepository paymentRepo;
+	private PaymentRepository paymentRepo;
 	
 	@Autowired
-	OwnedPolicyRepository ownedPolicyRepo;
+	private OwnedPolicyRepository ownedPolicyRepo;
 	
 	@Autowired
-	CustomerRepository customerRepo;
+	private CustomerRepository customerRepo;
 	
 
 	@Override

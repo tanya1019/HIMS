@@ -19,17 +19,17 @@ public class AdminPolicy {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	Integer id;
+	private Integer id;
 	
-	String policyName;
-	String policyDescription;
-	Integer policyDuration;
-	Double premiumAmount;
-    Boolean customPolicy = false;
-    Integer propertyAmount ;//range
+	private String policyName;
+	private String policyDescription;
+	private Integer policyDuration;
+	private Double premiumAmount;
+	private Boolean customPolicy = false;
+	private Integer propertyAmount ;//range
     
     @ManyToMany(cascade = {CascadeType.ALL})
-    List<Feature> features = new ArrayList<>();
+    private List<Feature> features = new ArrayList<>();
     
     
 	public AdminPolicy() {
@@ -57,12 +57,6 @@ public class AdminPolicy {
 		this.features = features;
 	}
 
-	@Override
-	public String toString() {
-		return "AdminPolicy [id=" + id + ", policyName=" + policyName + ", policyDescription=" + policyDescription
-				+ ", policyDuration=" + policyDuration + ", premiumAmount=" + premiumAmount + ", customPolicy="
-				+ customPolicy + ", propertyAmount=" + propertyAmount + ", features=" + features + "]";
-	}
 	public Integer getId() {
 		return id;
 	}

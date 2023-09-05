@@ -4,8 +4,8 @@ package com.insurance.homeInsurance.dto;
 
 public class loginDto {
 	
-	String email;
-	String password;
+	private String email;
+	private String password;
 	
 	public String getEmail() {
 		return email;

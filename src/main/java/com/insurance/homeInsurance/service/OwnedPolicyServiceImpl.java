@@ -16,9 +16,9 @@ import com.insurance.homeInsurance.exception.OwnedPolicyException;
 public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 
 	@Autowired
-	OwnedPolicyRepository ownedPolicyRepo;
+	private OwnedPolicyRepository ownedPolicyRepo;
       @Autowired
-    CustomerRepository customerRepo;
+    private CustomerRepository customerRepo;
 	
 	
 		@Override
@@ -37,7 +37,7 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	         return ownedPolicy;	
 	}
 		@Override
-		public List<OwnedPolicy> getownedPolicyByCustomerId(Integer CustId) throws OwnedPolicyException {
+		public List<OwnedPolicy> getAllOwnedPoliciesByCustomerId(Integer CustId) throws OwnedPolicyException {
 			Optional<Customer> custOpt = this.customerRepo.findById(CustId);
 	         if(!custOpt.isPresent()) {
 	          throw new OwnedPolicyException("Customer not found" +CustId);

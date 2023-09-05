@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.insurance.homeInsurance.dao.OwnedPolicyRepository;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
-import com.insurance.homeInsurance.entity.Property;
-import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.exception.OwnedPolicyException;
 import com.insurance.homeInsurance.service.OwnedPolicyService;
 
@@ -20,7 +17,7 @@ import com.insurance.homeInsurance.service.OwnedPolicyService;
 public class OwnedPolicyController {
 	
 @Autowired
-OwnedPolicyService  ownedPolicyService ;
+private OwnedPolicyService  ownedPolicyService ;
 //
 //@GetMapping("getownedpolicy/{id}")
 //public OwnedPolicy getOwnedPolicyByCustomerId(@PathVariable ("id") Integer id ) throws OwnedPolicyException{
@@ -35,7 +32,7 @@ public String getGreeting() {
 
 }
 
-@PostMapping("/createOwnedPolicy/{id}")
+@PostMapping("/ownedpolicy/{id}")
 
  public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("id") Integer id) throws OwnedPolicyException {
 
@@ -45,11 +42,11 @@ public String getGreeting() {
 
      
 
-@GetMapping("/getAllOwnedPolicies/{custId}")
+@GetMapping("/allownedpolicies/{custId}")
 
  public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws OwnedPolicyException{
 
- return this.ownedPolicyService.getownedPolicyByCustomerId(CustId);
+ return this.ownedPolicyService.getAllOwnedPoliciesByCustomerId(CustId);
 
 
  }

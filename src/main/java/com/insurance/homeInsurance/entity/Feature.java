@@ -1,15 +1,18 @@
 package com.insurance.homeInsurance.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Feature {
 	@Id
-	Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	
-	String featureName;
-	Double percent;
+	private String featureName;
+	private Double percent;
 	
 	public Feature() {
 		super();

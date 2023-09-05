@@ -14,7 +14,7 @@ import com.insurance.homeInsurance.exception.CustomerException;
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	AdminRepository adminRepo;
+	private AdminRepository adminRepo;
 	
 	
 	@Override

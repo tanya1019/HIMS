@@ -23,22 +23,17 @@ public class FeatureController {
 
 	
 	@Autowired
-	FeatureService featureService;
+	private FeatureService featureService;
 	
 	
 	@PostMapping("/feature")
 	public Feature addFeature(@RequestBody Feature newFeature) throws FeatureException {
-		
-		try {
-			return this.featureService.addFeature(newFeature);
-		}catch (FeatureException e) {
-			throw e;
-		}
+		return this.featureService.addFeature(newFeature);
 	}
 	
-	@GetMapping("/getAllFeature")
-	public Collection<Feature> getAllFeature() {
-		return this.featureService.getAllFeature();
+	@GetMapping("/allfeatures")
+	public Collection<Feature> getAllFeatures() {
+		return this.featureService.getAllFeatures();
 	}
 	
 	

@@ -18,21 +18,21 @@ public class Payment {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	Integer payment_id;
+	private Integer payment_id;
 	
-	Double paymentAmount;
+	private Double paymentAmount;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
-	LocalDate paymentDate;
+	private LocalDate paymentDate;
 	
-	String paymentType;
+	private String paymentType;
 	
 	@JsonIgnore
 	@ManyToOne(cascade = {CascadeType.ALL})
-	Customer customerDeatails;
+	private Customer customerDeatails;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
-	OwnedPolicy ownedPolicyDetail;
+	private OwnedPolicy ownedPolicyDetail;
 	
 	public Payment() {
 		super();
@@ -93,12 +93,6 @@ public class Payment {
 		this.paymentType = paymentType;
 	}
 
-	@Override
-	public String toString() {
-		return "Payment [payment_id=" + payment_id + ", paymentAmount=" + paymentAmount + ", paymentDate=" + paymentDate
-				+ ", paymentType=" + paymentType + ", customerDeatails=" + customerDeatails + ", ownedPolicyDetail="
-				+ ownedPolicyDetail + "]";
-	}
 	
 	
 }
