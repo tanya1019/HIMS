@@ -39,7 +39,7 @@ public class CustomerController {
 	
 	@GetMapping("/getAllCustomer")
 	public Collection<Customer> getAllCustomer() {
-		return this.customerService.getAllCustomer();
+		return this.customerService.getAllCustomers();
 	}
 	
 	

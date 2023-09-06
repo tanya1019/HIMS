@@ -55,7 +55,7 @@ public class FeatureServiceImpl implements FeatureService {
 	
 	
 	@Override
-	public Collection<Feature> getAllFeature() {
+	public Collection<Feature> getAllFeatures() {
 		//created by Anish
 		//get all features 
 		return this.featureRepo.findAll();

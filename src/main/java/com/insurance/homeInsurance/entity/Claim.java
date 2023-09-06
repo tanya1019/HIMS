@@ -159,6 +159,15 @@ public class Claim {
 	}
 
 
+	public Claim(Integer id, LocalDate claimedDate, String causeOfClaim, Double claimableAmount) {
+		super();
+		this.id = id;
+		this.claimedDate = claimedDate;
+		this.causeOfClaim = causeOfClaim;
+		this.claimableAmount = claimableAmount;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Claim [id=" + id + ", claimedDate=" + claimedDate + ", documentProof=" + Arrays.toString(documentProof)

@@ -10,7 +10,7 @@ public interface CustomerService {
 	
 	Customer addCustomer(Customer newCustomer) throws CustomerException ;
 	Customer updateCustomer(Customer newCustomer) throws CustomerException;
-	Collection<Customer> getAllCustomer();
+	Collection<Customer> getAllCustomers();
 	
 	Customer updateCustomerUsingId(Customer customer) throws CustomerException;
 	Customer getCustomerById(Integer id)throws CustomerException;
