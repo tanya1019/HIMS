@@ -68,6 +68,20 @@ public class OwnedPolicy {
 		this.paymentDetails = paymentDetails;
 		this.claim = claim;
 	}
+	
+	
+
+	public OwnedPolicy(LocalDate issueDate, LocalDate expiryDate, String nomineeName, Integer nomineeAge,
+			String nomineeRelation) {
+		super();
+		this.issueDate = issueDate;
+		this.expiryDate = expiryDate;
+		this.nomineeName = nomineeName;
+		this.nomineeAge = nomineeAge;
+		this.nomineeRelation = nomineeRelation;
+	}
+
+
 
 	public Claim getClaim(Claim claim) {
 		return claim;

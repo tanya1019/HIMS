@@ -43,6 +43,16 @@ public class Property {
 	
 
 
+	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty) {
+		super();
+		this.propId = propId;
+		this.houseNo = houseNo;
+		this.areaInSquareFeet = areaInSquareFeet;
+		this.costOfProperty = costOfProperty;
+	}
+
+
+
 	public Property(Integer propId, Integer custId, String houseNo, Double areaInSquareFeet, Double costOfProperty,
 			Double ageOfBuilding, Integer pincode, String city, String streetNumber, String region,
 			Boolean policyClaimed, Customer customer, OwnedPolicy ownedPolicy, Claim claim) {

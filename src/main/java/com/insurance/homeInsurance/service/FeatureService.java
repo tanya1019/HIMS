@@ -13,7 +13,7 @@ public interface FeatureService {
 	
 	Feature addFeature(Feature newFeature) throws FeatureException ;
 	Feature updateFeature(Feature newFeature) throws CustomerException;
-	Collection<Feature> getAllFeature();
+	Collection<Feature> getAllFeatures();
 	Feature deleteFeatureById(Integer id) throws FeatureException;
 	OwnedPolicy getFeatureByOwnedPolicyId(Integer id) throws FeatureException;
 

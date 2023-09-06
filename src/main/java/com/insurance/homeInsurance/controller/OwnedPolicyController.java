@@ -49,7 +49,7 @@ public String getGreeting() {
 
  public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
 
- return this.ownedPolicyService.getownedPolicyByCustomerId(CustId);
+ return this.ownedPolicyService.getAllOwnedPoliciesByCustomerId(CustId);
 
 
  }

@@ -37,7 +37,7 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	         return ownedPolicy;	
 	}
 		@Override
-		public List<OwnedPolicy> getownedPolicyByCustomerId(Integer CustId) throws CustomerException {
+		public List<OwnedPolicy> getAllOwnedPoliciesByCustomerId(Integer CustId) throws CustomerException {
 			Optional<Customer> custOpt = this.customerRepo.findById(CustId);
 	         if(!custOpt.isPresent()) {
 	          throw new CustomerException("Customer not found" +CustId);

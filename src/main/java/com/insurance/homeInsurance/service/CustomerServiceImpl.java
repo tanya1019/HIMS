@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Collection<Customer> getAllCustomer() {
+	public Collection<Customer> getAllCustomers() {
 		//created by Anish
 		//get all features 
 		

@@ -13,7 +13,7 @@ public interface PropertyService {
 
 	Property getPropertyByCustomerID(Integer propId, Integer CustId) throws CustomerException, PropertyException;
 	
-	List<Property> getPropertiesByCustomerId (Integer id) throws CustomerException;
+	List<Property> getPropertyByCustomerID (Integer id) throws CustomerException;
 
 	
 

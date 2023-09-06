@@ -38,7 +38,7 @@ public class FeatureController {
 	
 	@GetMapping("/getAllFeature")
 	public Collection<Feature> getAllFeature() {
-		return this.featureService.getAllFeature();
+		return this.featureService.getAllFeatures();
 	}
 	
 	

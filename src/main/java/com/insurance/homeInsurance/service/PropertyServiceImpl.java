@@ -60,7 +60,7 @@ public class PropertyServiceImpl implements PropertyService {
 	 }
 
 	@Override
-	public List<Property> getPropertiesByCustomerId(Integer id) throws CustomerException {
+	public List<Property> getPropertyByCustomerID(Integer id) throws CustomerException {
 		
 		 Optional<Customer> custOpt = this.customerRepo.findById(id);
 		 if (!custOpt.isPresent()) {
