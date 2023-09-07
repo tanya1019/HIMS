@@ -1,5 +1,7 @@
 package com.insurance.homeInsurance.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.insurance.homeInsurance.entity.AdminPolicy;
+import com.insurance.homeInsurance.exception.AdminPolicyException;
 import com.insurance.homeInsurance.service.AdminPolicyService;
 
 @RestController
@@ -27,6 +30,10 @@ public class AdminPolicyController {
         AdminPolicy adminGet = this.adminPolicyService.getPolicyById(id);
         return adminGet;
     }
-
+    
+@GetMapping("/allPolicies")
+public List<AdminPolicy> getAllPolicy() throws AdminPolicyException{
+	return this.adminPolicyService.getAllPolicy();
+}
 	
 }
