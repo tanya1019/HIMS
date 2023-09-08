@@ -82,7 +82,7 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		
 		Customer customer = customerOpt.get();
-		System.out.println(customer);
+		
 		
 		if(!passwordEncoder.matches(login.getPassword(), customer.getPassword())) {
 			throw new CustomerException("Invalid password");

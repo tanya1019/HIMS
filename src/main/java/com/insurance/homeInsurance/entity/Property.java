@@ -17,14 +17,14 @@ public class Property {
 	@Id
 	Integer propId;
 	Integer custId;
-	String houseNo;
+	String address;
+	String country;
+	String  city;
+	Integer pincode;
 	Double areaInSquareFeet;
 	Double costOfProperty;
 	Double ageOfBuilding;
-    Integer pincode;
-    String  city;
-	String  streetNumber;
-	String  region;
+	
 	Boolean policyClaimed = false;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
@@ -46,31 +46,63 @@ public class Property {
 	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty) {
 		super();
 		this.propId = propId;
-		this.houseNo = houseNo;
+	
 		this.areaInSquareFeet = areaInSquareFeet;
 		this.costOfProperty = costOfProperty;
 	}
 
 
 
-	public Property(Integer propId, Integer custId, String houseNo, Double areaInSquareFeet, Double costOfProperty,
-			Double ageOfBuilding, Integer pincode, String city, String streetNumber, String region,
-			Boolean policyClaimed, Customer customer, OwnedPolicy ownedPolicy, Claim claim) {
+
+
+
+	public Property(Integer propId, Integer custId, String address, String country, String city, Integer pincode,
+			Double areaInSquareFeet, Double costOfProperty, Double ageOfBuilding, Boolean policyClaimed,
+			Customer customer, OwnedPolicy ownedPolicy, Claim claim) {
 		super();
 		this.propId = propId;
 		this.custId = custId;
-		this.houseNo = houseNo;
+		this.address = address;
+		this.country = country;
+		this.city = city;
+		this.pincode = pincode;
 		this.areaInSquareFeet = areaInSquareFeet;
 		this.costOfProperty = costOfProperty;
 		this.ageOfBuilding = ageOfBuilding;
-		this.pincode = pincode;
-		this.city = city;
-		this.streetNumber = streetNumber;
-		this.region = region;
 		this.policyClaimed = policyClaimed;
 		this.customer = customer;
 		this.ownedPolicy = ownedPolicy;
 		this.claim = claim;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+
+	public Claim getClaim() {
+		return claim;
 	}
 
 
@@ -93,12 +125,7 @@ public class Property {
 	public void setPropId(Integer propId) {
 		this.propId = propId;
 	}
-	public String getHouseNo() {
-		return houseNo;
-	}
-	public void setHouseNo(String houseNo) {
-		this.houseNo = houseNo;
-	}
+
 	public Double getAreaInSquareFeet() {
 		return areaInSquareFeet;
 	}
@@ -129,18 +156,7 @@ public class Property {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getStreetNumber() {
-		return streetNumber;
-	}
-	public void setStreetNumber(String streetNumber) {
-		this.streetNumber = streetNumber;
-	}
-	public String getRegion() {
-		return region;
-	}
-	public void setRegion(String region) {
-		this.region = region;
-	}
+
 	public Boolean getPolicyClaimed() {
 		return policyClaimed;
 	}
@@ -172,14 +188,7 @@ public class Property {
 		this.claim = claim;
 	}
 
-	@Override
-	public String toString() {
-		return "Property [propId=" + propId + ", custId=" + custId + ", houseNo=" + houseNo + ", areaInSquareFeet="
-				+ areaInSquareFeet + ", costOfProperty=" + costOfProperty + ", ageOfBuilding=" + ageOfBuilding
-				+ ", pincode=" + pincode + ", city=" + city + ", streetNumber=" + streetNumber + ", region=" + region
-				+ ", policyClaimed=" + policyClaimed + ", customer=" + customer + ", ownedPolicy=" + ownedPolicy
-				+ ", claim=" + claim + "]";
-	}
+
 	
 	
 	
