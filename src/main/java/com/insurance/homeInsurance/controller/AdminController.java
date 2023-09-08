@@ -1,6 +1,7 @@
 package com.insurance.homeInsurance.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,8 @@ import com.insurance.homeInsurance.exception.AdminException;
 import com.insurance.homeInsurance.service.AdminService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class AdminController {
 
 	@Autowired
@@ -41,7 +44,7 @@ public class AdminController {
 	 }
 	
 	@PostMapping("/adminLogin")
-	 public Boolean login(@RequestBody loginDto login) throws AdminException {
+	 public Admin login(@RequestBody loginDto login) throws AdminException {
 
 		 return this.adminService.adminLogin(login);
 	 }
