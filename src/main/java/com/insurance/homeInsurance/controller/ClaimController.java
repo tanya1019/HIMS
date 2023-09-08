@@ -24,7 +24,7 @@ public class ClaimController {
 	@Autowired
 	ClaimService claimService;
 	
-	@PostMapping("/createClaim/{policyId}/{propertyId}")
+	@PostMapping("/claim/{policyId}/{propertyId}")
 	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, PropertyException, OwnedPolicyException {
 		
 		try {
@@ -34,7 +34,7 @@ public class ClaimController {
 		}	
 	}
 	
-	@GetMapping("/getAllClaim")
+	@GetMapping("/claims")
 	public Collection<Claim> getAllClaim() {
 		return this.claimService.getAllClaim();
 	}
@@ -45,7 +45,7 @@ public class ClaimController {
 	
 	
 	@SuppressWarnings("unchecked")
-	@GetMapping("/getClaim/{propId}/{polId}")
+	@GetMapping("/claim/{propId}/{polId}")
 	public Collection<Claim> getClaimByPolicyIdAndCustomerId(@PathVariable("claimId") Integer ClaimId ,@PathVariable("propId") Integer PropId, @PathVariable("polId") Integer PolId) throws ClaimException, PropertyException, OwnedPolicyException {
 		
 		return (Collection<Claim>) this.claimService.getClaimByPolicyIdAndPropertyId(PropId,PolId, ClaimId);

@@ -27,17 +27,11 @@ OwnedPolicyService  ownedPolicyService ;
 //	return this.ownedPolicyService.getOwnedPolicyByCustomerId(id);
 //	
 //}
-@GetMapping("/")
 
-public String getGreeting() {
 
-    return "Welcome";
+@PostMapping("/ownedpolicy/{custid}")
 
-}
-
-@PostMapping("/createOwnedPolicy/{id}")
-
- public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("id") Integer id) throws CustomerException {
+ public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("custid") Integer id) throws CustomerException {
 
  return this.ownedPolicyService.createOwnedPolicyByCustomerId(ownedPolicy, id) ;
 
@@ -45,7 +39,7 @@ public String getGreeting() {
 
      
 
-@GetMapping("/getAllOwnedPolicies/{custId}")
+@GetMapping("/ownedpolicies/{custId}")
 
  public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
 

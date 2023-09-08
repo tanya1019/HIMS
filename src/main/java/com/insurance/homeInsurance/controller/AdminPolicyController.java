@@ -21,19 +21,19 @@ public class AdminPolicyController {
 	@Autowired
 	AdminPolicyService adminPolicyService;
 
-	@PostMapping("/createAdminPolicy")
+	@PostMapping("/adminpolicy")
     public AdminPolicy createAdminPolicy(@RequestBody AdminPolicy newAdminPolicy) {
         return this.adminPolicyService.createAdminPolicy(newAdminPolicy);
     }
 
     
-    @GetMapping("/getAdminPolicy/{id}")
+    @GetMapping("/adminpolicy/{id}")
     public AdminPolicy getAdminPolicyById(@PathVariable("id") Integer id) {
         AdminPolicy adminGet = this.adminPolicyService.getPolicyById(id);
         return adminGet;
     }
     
-@GetMapping("/allPolicies")
+@GetMapping("/policies")
 public List<AdminPolicy> getAllPolicy() throws AdminPolicyException{
 	return this.adminPolicyService.getAllPolicy();
 }

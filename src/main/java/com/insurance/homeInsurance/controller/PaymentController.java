@@ -18,7 +18,7 @@ public class PaymentController {
 	PaymentService paymentService;
 	
 	
-	@PostMapping("/createPayment/{ownedPolicyId}/{custId}")
+	@PostMapping("/payment/{ownedPolicyId}/{custId}")
 	public Payment addPayment(@RequestBody Payment newPayment, @PathVariable("ownedPolicyId") Integer ownedPolicyId, @PathVariable("custId") Integer custId) throws OwnedPolicyException, CustomerException {
 		return this.paymentService.createPaymentByOwnedPolicyId(newPayment, ownedPolicyId, custId);
 	}
