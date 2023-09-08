@@ -37,13 +37,13 @@ public class CustomerController {
 		}
 	}
 	
-	@GetMapping("/getAllCustomer")
+	@GetMapping("/customers")
 	public Collection<Customer> getAllCustomer() {
 		return this.customerService.getAllCustomers();
 	}
 	
 	
-	@PutMapping("/customer/update/{id}")
+	@PutMapping("/customer/{id}")
 	 public Customer updateCustomer(@RequestBody Customer newCustomer)throws CustomerException {
 
 		try {
