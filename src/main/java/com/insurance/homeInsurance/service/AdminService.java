@@ -9,6 +9,6 @@ public interface AdminService {
 	
 	Admin addAdmin(Admin newAdmin) throws AdminException;
 	Admin getAdminById(Integer id)throws AdminException;
-	Boolean adminLogin(loginDto login) throws AdminException;
+	Admin adminLogin(loginDto login) throws AdminException;
 
 }

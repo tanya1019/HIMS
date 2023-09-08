@@ -35,7 +35,6 @@ public class CustomerController {
 		}catch (CustomerException e) {
 			throw e;
 		}
-		
 	}
 	
 	@GetMapping("/getAllCustomer")

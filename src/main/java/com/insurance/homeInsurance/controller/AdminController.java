@@ -16,6 +16,7 @@ import com.insurance.homeInsurance.service.AdminService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+
 public class AdminController {
 
 	@Autowired
@@ -43,7 +44,7 @@ public class AdminController {
 	 }
 	
 	@PostMapping("/adminLogin")
-	 public Boolean login(@RequestBody loginDto login) throws AdminException {
+	 public Admin login(@RequestBody loginDto login) throws AdminException {
 
 		 return this.adminService.adminLogin(login);
 	 }

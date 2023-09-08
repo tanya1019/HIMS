@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 public class Customer {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
 	
 	String contactNumber;
@@ -37,10 +37,6 @@ public class Customer {
 	
 	@OneToMany(cascade = {CascadeType.ALL})
 	List<Property> propertyDetails = new ArrayList<>();
-	
-	
-	
-	
 	
 	public Customer() {
 		super();
