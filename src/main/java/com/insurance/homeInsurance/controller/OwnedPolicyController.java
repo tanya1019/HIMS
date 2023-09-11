@@ -3,6 +3,7 @@ package com.insurance.homeInsurance.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.service.OwnedPolicyService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class OwnedPolicyController {
 	
 @Autowired
@@ -27,17 +29,12 @@ OwnedPolicyService  ownedPolicyService ;
 //	return this.ownedPolicyService.getOwnedPolicyByCustomerId(id);
 //	
 //}
-@GetMapping("/")
 
-public String getGreeting() {
 
-    return "Welcome";
+@PostMapping("/ownedpolicy/{custid}")
 
-}
+ public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("custid") Integer id) throws CustomerException {
 
-@PostMapping("/createOwnedPolicy/{id}")
-
- public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("id") Integer id) throws CustomerException {
 
  return this.ownedPolicyService.createOwnedPolicyByCustomerId(ownedPolicy, id) ;
 
@@ -45,7 +42,7 @@ public String getGreeting() {
 
      
 
-@GetMapping("/getAllOwnedPolicies/{custId}")
+@GetMapping("/ownedpolicies/{custId}")
 
  public List<OwnedPolicy> getOwnedPolicyByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
 

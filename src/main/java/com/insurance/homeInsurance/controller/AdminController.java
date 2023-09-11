@@ -19,7 +19,7 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 	
-	@PostMapping("/addAdmin")
+	@PostMapping("/admin")
 	public Admin addAdmin(@RequestBody Admin newAdmin) throws AdminException  {
 		
 		try {
@@ -40,8 +40,8 @@ public class AdminController {
 		} 
 	 }
 	
-	@PostMapping("/adminLogin")
-	 public Boolean login(@RequestBody loginDto login) throws AdminException {
+	@PostMapping("/adminlogin")
+	 public Admin login(@RequestBody loginDto login) throws AdminException {
 
 		 return this.adminService.adminLogin(login);
 	 }

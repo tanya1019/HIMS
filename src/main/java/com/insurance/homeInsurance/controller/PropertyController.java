@@ -23,18 +23,18 @@ public class PropertyController {
 	@Autowired
 	 PropertyService propertyServices;
 
-	 @PostMapping("/createProperty/{id}")
-	 public Property createPropertyByCustomerID(@RequestBody Property newProperty, @PathVariable("id") Integer id) throws CustomerException {
+	 @PostMapping("/property/{custid}")
+	 public Property createPropertyByCustomerID(@RequestBody Property newProperty, @PathVariable("custid") Integer id) throws CustomerException {
 	 return this.propertyServices.createPropertyByCustomerID(newProperty, id) ;
 	}
 	 
-	 @GetMapping("/getProperty/{custId}/{propId}") 
+	 @GetMapping("/property/{custId}/{propId}") 
 	 public Property getPropertyByCustomerID(@PathVariable("custId") Integer CustId, @PathVariable("propId") Integer PropId ) throws CustomerException, PropertyException{
 	 return this.propertyServices.getPropertyByCustomerID (CustId, PropId);
 
 	 }
 	 
-	 @GetMapping("/getAllProperties/{custId}") 
+	 @GetMapping("/properties/{custId}") 
 	 public List<Property> getPropertiesByCustomerId(@PathVariable("custId") Integer CustId ) throws CustomerException{
 	 return this.propertyServices.getPropertyByCustomerID(CustId);
 

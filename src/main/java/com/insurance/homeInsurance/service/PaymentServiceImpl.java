@@ -2,6 +2,7 @@ package com.insurance.homeInsurance.service;
 
 import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import com.insurance.homeInsurance.entity.OwnedPolicy;
 import com.insurance.homeInsurance.entity.Payment;
 import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.exception.OwnedPolicyException;
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -25,6 +29,9 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
 	CustomerRepository customerRepo;
+	
+	
+	
 	
 
 	@Override
@@ -51,5 +58,8 @@ public class PaymentServiceImpl implements PaymentService {
 		return this.paymentRepo.save(newPayment);
 
 	}
+
+
+
 
 }
