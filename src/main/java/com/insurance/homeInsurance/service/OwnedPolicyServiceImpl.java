@@ -1,5 +1,7 @@
 package com.insurance.homeInsurance.service;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +21,6 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	OwnedPolicyRepository ownedPolicyRepo;
       @Autowired
     CustomerRepository customerRepo;
-	
       
 	
 		@Override
@@ -31,7 +32,10 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	         }
 
 	         Customer customer = custOpt.get();
+	         
 	         newOwnedPolicy.setCustomer(customer);
+	         newOwnedPolicy.setIssueDate(LocalDate.now());
+	         newOwnedPolicy.setExpiryDate(LocalDate.of(LocalDate.now().get(ChronoField.YEAR)+1, LocalDate.now().get(ChronoField.MONTH_OF_YEAR), LocalDate.now().get(ChronoField.DAY_OF_MONTH)));
 	         OwnedPolicy ownedPolicy = this.ownedPolicyRepo.save(newOwnedPolicy);
 	         customer.getOwnedPolicy().add(ownedPolicy);
 	         this.customerRepo.save(customer);
