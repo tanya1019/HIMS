@@ -24,7 +24,7 @@ public class Property {
 	Double areaInSquareFeet;
 	Double costOfProperty;
 	Double ageOfBuilding;
-	
+	PropertyType  propertyType;
 	Boolean policyClaimed = false;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
@@ -56,9 +56,12 @@ public class Property {
 
 
 
+
+
+
 	public Property(Integer propId, Integer custId, String address, String country, String city, Integer pincode,
-			Double areaInSquareFeet, Double costOfProperty, Double ageOfBuilding, Boolean policyClaimed,
-			Customer customer, OwnedPolicy ownedPolicy, Claim claim) {
+			Double areaInSquareFeet, Double costOfProperty, Double ageOfBuilding, PropertyType propertyType,
+			Boolean policyClaimed, Customer customer, OwnedPolicy ownedPolicy, Claim claim) {
 		super();
 		this.propId = propId;
 		this.custId = custId;
@@ -69,6 +72,7 @@ public class Property {
 		this.areaInSquareFeet = areaInSquareFeet;
 		this.costOfProperty = costOfProperty;
 		this.ageOfBuilding = ageOfBuilding;
+		this.propertyType = propertyType;
 		this.policyClaimed = policyClaimed;
 		this.customer = customer;
 		this.ownedPolicy = ownedPolicy;
@@ -187,6 +191,19 @@ public class Property {
 	public void setClaim(Claim claim) {
 		this.claim = claim;
 	}
+
+
+
+	public PropertyType getPropertyType() {
+		return propertyType;
+	}
+
+
+
+	public void setPropertyType(PropertyType propertyType) {
+		this.propertyType = propertyType;
+	}
+	
 
 
 	
