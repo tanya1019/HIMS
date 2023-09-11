@@ -1,6 +1,12 @@
 package com.insurance.homeInsurance.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.*;
+
+
+
 
 
 import javax.persistence.CascadeType;
@@ -26,10 +32,13 @@ public class OwnedPolicy {
 	Integer id;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate issueDate;
+//	Date issueDate = new java.sql.Date(System.currentTimeMillis()); 
+//	DateTimeFormatter issueDate = DateTimeFormatter.ofPattern("yyyy/MM/dd");   
+	LocalDate issueDate = LocalDate.now();
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate expiryDate;
+	LocalDate expiryDate = LocalDate.of(issueDate.get(ChronoField.YEAR)+1, issueDate.get(ChronoField.MONTH_OF_YEAR), issueDate.get(ChronoField.DAY_OF_MONTH));
+	
 	
 	String nomineeName;
 	Integer nomineeAge;
