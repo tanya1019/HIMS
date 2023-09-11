@@ -35,7 +35,7 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
 	         
 	         newOwnedPolicy.setCustomer(customer);
 	         newOwnedPolicy.setIssueDate(LocalDate.now());
-	         newOwnedPolicy.setExpiryDate(LocalDate.of(LocalDate.now().get(ChronoField.YEAR)+1, LocalDate.now().get(ChronoField.MONTH_OF_YEAR), LocalDate.now().get(ChronoField.DAY_OF_MONTH)));
+	         newOwnedPolicy.setExpiryDate(LocalDate.of(LocalDate.now().get(ChronoField.YEAR)+1, LocalDate.now().get(ChronoField.MONTH_OF_YEAR), LocalDate.now().get(ChronoField.DAY_OF_MONTH)-1));
 	         OwnedPolicy ownedPolicy = this.ownedPolicyRepo.save(newOwnedPolicy);
 	         customer.getOwnedPolicy().add(ownedPolicy);
 	         this.customerRepo.save(customer);
