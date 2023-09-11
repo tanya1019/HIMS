@@ -40,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	@Override
-	public Admin adminLogin(loginDto login) throws AdminException {
+	public Boolean adminLogin(loginDto login) throws AdminException {
 		
 		Optional<Admin>adminOpt = (this.adminRepo).findByEmail(login.getEmail());
 		
@@ -52,7 +52,7 @@ public class AdminServiceImpl implements AdminService {
 		if(!admin.getPassword().equals(login.getPassword())) {
 			throw new AdminException("Invalid password");
 		}
-		return admin;
+		return true;
 
 	}
 }

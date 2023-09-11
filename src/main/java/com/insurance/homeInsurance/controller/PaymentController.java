@@ -1,6 +1,7 @@
 package com.insurance.homeInsurance.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +23,8 @@ public class PaymentController {
 	public Payment addPayment(@RequestBody Payment newPayment, @PathVariable("ownedPolicyId") Integer ownedPolicyId, @PathVariable("custId") Integer custId) throws OwnedPolicyException, CustomerException {
 		return this.paymentService.createPaymentByOwnedPolicyId(newPayment, ownedPolicyId, custId);
 	}
+	
+	
+
 	
 }
