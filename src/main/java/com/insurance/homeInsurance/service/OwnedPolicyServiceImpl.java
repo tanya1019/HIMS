@@ -20,6 +20,7 @@ public class OwnedPolicyServiceImpl implements OwnedPolicyService {
       @Autowired
     CustomerRepository customerRepo;
 	
+      
 	
 		@Override
 		public OwnedPolicy createOwnedPolicyByCustomerId(OwnedPolicy newOwnedPolicy, Integer CustId)
