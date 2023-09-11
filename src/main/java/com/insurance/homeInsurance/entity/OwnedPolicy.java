@@ -34,10 +34,12 @@ public class OwnedPolicy {
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
 //	Date issueDate = new java.sql.Date(System.currentTimeMillis()); 
 //	DateTimeFormatter issueDate = DateTimeFormatter.ofPattern("yyyy/MM/dd");   
-	LocalDate issueDate = LocalDate.now();
+	LocalDate issueDate;
 	
 	@JsonFormat(pattern  = "yyyy-MM-dd" )
-	LocalDate expiryDate = LocalDate.of(issueDate.get(ChronoField.YEAR)+1, issueDate.get(ChronoField.MONTH_OF_YEAR), issueDate.get(ChronoField.DAY_OF_MONTH));
+	LocalDate expiryDate;
+	
+//	= LocalDate.of(issueDate.get(ChronoField.YEAR)+1, issueDate.get(ChronoField.MONTH_OF_YEAR), issueDate.get(ChronoField.DAY_OF_MONTH));
 	
 	
 	String nomineeName;
