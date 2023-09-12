@@ -33,9 +33,9 @@ public class AdminPolicyController {
         return adminGet;
     }
     
-@GetMapping("/policies")
-public List<AdminPolicy> getAllPolicy() throws AdminPolicyException{
-	return this.adminPolicyService.getAllPolicy();
-}
+	@GetMapping("/policies")
+	public List<AdminPolicy> getAllPolicy() throws AdminPolicyException{
+		return this.adminPolicyService.getAllPolicy();
+	}
 	
 }
