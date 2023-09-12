@@ -31,12 +31,12 @@ OwnedPolicyService  ownedPolicyService ;
 //}
 
 
-@PostMapping("/ownedpolicy/{custid}")
+@PostMapping("/ownedpolicy/{custid}/{adminPolicyId}")
 
- public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("custid") Integer id) throws CustomerException {
+ public OwnedPolicy createOwnedPolicyByCustomerId(@RequestBody OwnedPolicy ownedPolicy, @PathVariable("custid") Integer custid, @PathVariable("adminPolicyId") Integer adminPolicyId) throws CustomerException {
 
 
- return this.ownedPolicyService.createOwnedPolicyByCustomerId(ownedPolicy, id) ;
+ return this.ownedPolicyService.createOwnedPolicyByCustomerId(ownedPolicy, custid, adminPolicyId) ;
 
 }
 

@@ -9,7 +9,7 @@ import com.insurance.homeInsurance.exception.CustomerException;
 
 
 public interface OwnedPolicyService {
-	OwnedPolicy createOwnedPolicyByCustomerId( OwnedPolicy newOwnedPolicy , Integer CustId) throws CustomerException;
+	OwnedPolicy createOwnedPolicyByCustomerId( OwnedPolicy newOwnedPolicy , Integer CustId, Integer AdminPolicyId) throws CustomerException;
 	List<OwnedPolicy> getAllOwnedPoliciesByCustomerId (Integer CustId) throws CustomerException;
 	
 }
