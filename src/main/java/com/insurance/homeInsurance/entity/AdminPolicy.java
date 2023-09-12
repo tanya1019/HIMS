@@ -28,7 +28,7 @@ public class AdminPolicy {
     Boolean customPolicy = false;
     Integer propertyAmount ;//range
     
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade=CascadeType.ALL)
     List<Feature> features = new ArrayList<>();
     
     
