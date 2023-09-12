@@ -50,15 +50,7 @@ public class FeatureController {
     public Feature updateFeatureById(@RequestBody Feature feature ) throws FeatureException, CustomerException {
 
         return this.featureService.updateFeature(feature);     
-
- 
-
     }
-
-    
-
-
-	
 	
 	@DeleteMapping("/feature/{id}")
 	public ResponseEntity<Feature> deleteFeatureById(@PathVariable ("id") Integer id) throws FeatureException{
@@ -72,16 +64,5 @@ public class FeatureController {
 
 		 return this.featureService.getFeatureByOwnedPolicyId(id); 
 	 }
-	
-	
-	@PutMapping("/feature/{id}")
-
-    public Feature updateFeatureById(@RequestBody Feature feature) throws FeatureException, CustomerException {
-
-        return this.featureService.updateFeature(feature);     
-
- 
-
-    }
 	
 }

@@ -1,7 +1,8 @@
 package com.insurance.homeInsurance.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,11 +14,11 @@ import com.insurance.homeInsurance.exception.OwnedPolicyException;
 import com.insurance.homeInsurance.service.PaymentService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PaymentController {
 
 	@Autowired
 	PaymentService paymentService;
-	
 	
 	@PostMapping("/payment/{ownedPolicyId}/{custId}")
 	public Payment addPayment(@RequestBody Payment newPayment, @PathVariable("ownedPolicyId") Integer ownedPolicyId, @PathVariable("custId") Integer custId) throws OwnedPolicyException, CustomerException {
