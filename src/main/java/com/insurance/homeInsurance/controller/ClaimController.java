@@ -1,6 +1,7 @@
 package com.insurance.homeInsurance.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,10 +29,10 @@ public class ClaimController {
 	@Autowired
 	ClaimService claimService;
 	
-	@PostMapping("/claim/{policyId}")
-	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("policyId") Integer policyId) throws ClaimException, PropertyException, OwnedPolicyException {
+	@PostMapping("/claim/{policyId}/{custid}")
+	public Claim createClaimByPolicyIdAndPropertyId(@RequestBody Claim newClaim, @PathVariable("policyId") Integer policyId, @PathVariable("custid") Integer custid) throws ClaimException, PropertyException, OwnedPolicyException, CustomerException {
 		try {
-			return this.claimService.createClaimByPolicyIdAndPropertyId(newClaim,policyId);
+			return this.claimService.createClaimByPolicyIdAndCustomerId(newClaim,policyId, custid);
 		}catch (ClaimException e) {
 			throw e;
 		}	
@@ -63,4 +64,9 @@ public class ClaimController {
 
     }
 	
+	@GetMapping("/claim/{custId}")
+	public List<Claim> getClaimByCustomerId(@PathVariable("custId") Integer custId ) throws CustomerException {
+		return this.claimService.getClaimByCustomerId(custId);
+	}
+//	
 }
