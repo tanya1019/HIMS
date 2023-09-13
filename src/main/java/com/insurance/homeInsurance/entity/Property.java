@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Property {
 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	Integer propId;
+	
 	Integer custId;
 	String address;
 	String country;
