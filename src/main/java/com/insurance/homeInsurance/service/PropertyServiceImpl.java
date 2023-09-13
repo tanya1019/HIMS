@@ -73,4 +73,7 @@ public class PropertyServiceImpl implements PropertyService {
 		 return propsDetail;
 	}
 
+
+	
+
 }

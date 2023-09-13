@@ -33,11 +33,11 @@ public class FeatureServiceImpl implements FeatureService {
 		//created by Anish
 		//add new feature 
 		//Exception handling for adding new feature
-		Optional<Feature> FeatureOpt = this.featureRepo.findById(newFeature.getId());
-		
-		if(FeatureOpt.isPresent()) 
-			throw new FeatureException("Product Already Exist with id: " + newFeature.getId());
-	
+//		Optional<Feature> FeatureOpt = this.featureRepo.findById(newFeature.getId());
+//		
+//		if(FeatureOpt.isPresent()) 
+//			throw new FeatureException("Product Already Exist with id: " + newFeature.getId());
+//	
 		return this.featureRepo.save(newFeature);
 	}
 	
