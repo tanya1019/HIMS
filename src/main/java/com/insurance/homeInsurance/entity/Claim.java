@@ -8,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Claim {
@@ -39,6 +41,9 @@ public class Claim {
 	@OneToOne(cascade=CascadeType.ALL)
 	Property propertyDetails;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JsonIgnore
+	Customer customerDetails;
 	
 	
 	public LocalDate getDateOfIncident() {
@@ -156,6 +161,34 @@ public class Claim {
 		this.dateOfIncident = dateOfIncident;
 		this.ownedPolicyDetails = ownedPolicyDetails;
 		this.propertyDetails = propertyDetails;
+	}
+
+
+	public Customer getCustomerDetails() {
+		return customerDetails;
+	}
+
+
+	public void setCustomerDetails(Customer customerDetails) {
+		this.customerDetails = customerDetails;
+	}
+
+
+	public Claim(Integer id, LocalDate claimedDate, String[] documentProof, String causeOfClaim, Double claimableAmount,
+			Double claimRequestAmount, Boolean claimReviewed, LocalDate dateOfIncident, OwnedPolicy ownedPolicyDetails,
+			Property propertyDetails, Customer customerDetails) {
+		super();
+		this.id = id;
+		this.claimedDate = claimedDate;
+		this.documentProof = documentProof;
+		this.causeOfClaim = causeOfClaim;
+		this.claimableAmount = claimableAmount;
+		this.claimRequestAmount = claimRequestAmount;
+		this.claimReviewed = claimReviewed;
+		this.dateOfIncident = dateOfIncident;
+		this.ownedPolicyDetails = ownedPolicyDetails;
+		this.propertyDetails = propertyDetails;
+		this.customerDetails = customerDetails;
 	}
 
 
