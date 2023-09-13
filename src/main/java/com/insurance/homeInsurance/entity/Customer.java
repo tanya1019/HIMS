@@ -39,6 +39,9 @@ public class Customer {
 	List<Property> propertyDetails = new ArrayList<>();
 	
 	
+	@OneToMany(cascade = {CascadeType.ALL})
+	List<Claim> claimDetails = new ArrayList<>();
+	
 	
 	
 	
@@ -48,12 +51,48 @@ public class Customer {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", contactNumber=" + contactNumber + ", email=" + email + ", name=" + name
-				+ ", password=" + password + ", propertType=" + propertType + ", stripeId=" + stripeId
-				+ ", ownedPolicy=" + ownedPolicy + ", propertyDetails=" + propertyDetails + "]";
+	
+
+
+
+
+	public List<Claim> getClaimDetails() {
+		return claimDetails;
 	}
+
+
+
+
+
+
+
+	public void setClaimDetails(List<Claim> claimDetails) {
+		this.claimDetails = claimDetails;
+	}
+
+
+
+
+
+
+
+	public Customer(Integer id, String contactNumber, String email, String name, String password,
+			PropertyType propertType, String stripeId, List<OwnedPolicy> ownedPolicy, List<Property> propertyDetails,
+			List<Claim> claimDetails) {
+		super();
+		this.id = id;
+		this.contactNumber = contactNumber;
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.propertType = propertType;
+		this.stripeId = stripeId;
+		this.ownedPolicy = ownedPolicy;
+		this.propertyDetails = propertyDetails;
+		this.claimDetails = claimDetails;
+	}
+
+
 
 
 
