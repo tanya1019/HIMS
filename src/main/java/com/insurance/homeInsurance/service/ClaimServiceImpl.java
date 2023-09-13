@@ -33,18 +33,18 @@ public class ClaimServiceImpl implements ClaimService{
 	OwnedPolicyRepository ownedPolicyRepo;
 
 	@Override
-	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException,PropertyException,OwnedPolicyException {
+	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer polId) throws ClaimException,PropertyException,OwnedPolicyException {
 		
 		//get property and ownedPolicy data:
-		Optional<Property> propOpt = this.propertyRepo.findById(propId);
+//		Optional<Property> propOpt = this.propertyRepo.findById(propId);
 		Optional<OwnedPolicy> polOpt = this.ownedPolicyRepo.findById(polId);
 		
 		//check property is null or not
-		 if(!propOpt.isPresent()) {
-		 throw new PropertyException("Property not found" +propId);
-		 }
+//		 if(!propOpt.isPresent()) {
+//		 throw new PropertyException("Property not found" +propId);
+//		 }
 		 //get property details:
-		 Property property = propOpt.get();
+//		 Property property = propOpt.get();
 		 
 		//check policy is null or not
 		 if(!polOpt.isPresent()) {
@@ -54,7 +54,7 @@ public class ClaimServiceImpl implements ClaimService{
 		 OwnedPolicy ownedPolicy = polOpt.get();
 		 
 		 //set property to the new claim
-		 newClaim.setPropertyDetails(property);
+//		 newClaim.setPropertyDetails(property);
 		 
 		//set policy to the new claim
 		 newClaim.setOwnedPolicyDetails(ownedPolicy);
@@ -62,7 +62,7 @@ public class ClaimServiceImpl implements ClaimService{
 		 Claim claim = this.claimRepo.save(newClaim) ;
 		 
 		 //set claim in property:
-		 property.setClaim(claim);
+//		 property.setClaim(claim);
 		 return claim;
 	}
 
@@ -98,6 +98,20 @@ public class ClaimServiceImpl implements ClaimService{
 		return this.claimRepo.findAll();
 	}
 	
+	
+	@Override
+
+	public Claim updateClaim(Integer id) throws ClaimException {
+		
+		Optional<Claim> claimOpt = this.claimRepo.findById(id);
+		if(!claimOpt.isPresent()) {
+			throw new ClaimException("Claim not found of id --> ");
+		}
+		Claim claim = claimOpt.get();
+		claim.setClaimReviewed(true);
+		return this.claimRepo.save(claim);
+
+	}
 	
 	
 
