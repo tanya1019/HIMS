@@ -43,12 +43,12 @@ public class FeatureServiceImpl implements FeatureService {
 	
 	
 	@Override
-	public Feature updateFeature(Feature newFeature) throws CustomerException {
+	public Feature updateFeature(Feature newFeature) throws FeatureException {
 		
 		Optional<Feature> customerOpt = this.featureRepo.findById(newFeature.getId());
 		
 		if(!customerOpt.isPresent()) {
-			throw new CustomerException("Product not found of id --> " + newFeature.getId());
+			throw new FeatureException("Feature not found of id --> " + newFeature.getId());
 		}
 		return this.featureRepo.save(newFeature);
 	}
@@ -68,7 +68,7 @@ public class FeatureServiceImpl implements FeatureService {
 		Optional<Feature> FeatureOpt = this.featureRepo.findById(id);
 		
 		if(!FeatureOpt.isPresent()) {
-			throw new FeatureException("Item not found to delete, id no. is --> " + id);
+			throw new FeatureException("Feature not found to delete, id no. is --> " + id);
 		}
 		
 		this.featureRepo.delete(FeatureOpt.get());
