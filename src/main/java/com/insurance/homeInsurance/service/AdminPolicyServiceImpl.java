@@ -24,8 +24,8 @@ public class AdminPolicyServiceImpl implements AdminPolicyService {
 
 	@Override
 	public AdminPolicy getPolicyById(Integer id) {
-		  Optional<AdminPolicy> adminPolicy =  this.adminPolicyRepo.findById(id);
-	        return adminPolicy.get();
+		Optional<AdminPolicy> adminPolicy =  this.adminPolicyRepo.findById(id);
+	    return adminPolicy.get();
 	}
 
 
@@ -34,6 +34,7 @@ public class AdminPolicyServiceImpl implements AdminPolicyService {
 	
 		return adminPolicyRepo.findAll();
 	}
+	
 	@Override
 	public List<AdminPolicy> getAllPolicy() throws AdminPolicyException {
 				return this.adminPolicyRepo.findAll();

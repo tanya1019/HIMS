@@ -14,6 +14,7 @@ public interface PropertyService {
 	Property getPropertyByCustomerID(Integer propId, Integer CustId) throws CustomerException, PropertyException;
 	
 	List<Property> getPropertyByCustomerID (Integer id) throws CustomerException;
+	
 
 	
 

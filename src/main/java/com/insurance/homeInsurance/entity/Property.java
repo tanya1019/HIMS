@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Property {
 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	Integer propId;
+	
 	Integer custId;
 	String address;
 	String country;
@@ -26,6 +28,9 @@ public class Property {
 	Double ageOfBuilding;
 	PropertyType  propertyType;
 	Boolean policyClaimed = false;
+	Double premiumAmount ;
+	Double contentsCost;
+	String state;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JsonIgnore
@@ -41,14 +46,79 @@ public class Property {
 		super();
 	}
 	
+	
 
 
-	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty) {
+	
+
+
+	public Double getPremiumAmount() {
+		return premiumAmount;
+	}
+
+
+
+
+
+
+
+	public void setPremiumAmount(Double premiumAmount) {
+		this.premiumAmount = premiumAmount;
+	}
+
+
+
+
+
+
+
+	public Double getContentsCost() {
+		return contentsCost;
+	}
+
+
+
+
+
+
+
+	public void setContentsCost(Double contentsCost) {
+		this.contentsCost = contentsCost;
+	}
+
+
+
+
+
+
+
+	public String getState() {
+		return state;
+	}
+
+
+
+
+
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+
+
+
+
+	public Property(Integer propId, String houseNo, Double areaInSquareFeet, Double costOfProperty ){
 		super();
 		this.propId = propId;
 	
 		this.areaInSquareFeet = areaInSquareFeet;
 		this.costOfProperty = costOfProperty;
+	
 	}
 
 

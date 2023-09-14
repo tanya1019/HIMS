@@ -17,11 +17,7 @@ public class Admin {
 	String email;
 	String password;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	List<Renewal> renewalDetails = new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	List<AdminPolicy> adminPolicies = new ArrayList<>();
 	
 	public Admin(Integer id, String userName, String password, List<Renewal> renewalDetails,
 			List<AdminPolicy> adminPolicies) {
@@ -29,39 +25,13 @@ public class Admin {
 		this.id = id;
 		this.email = userName;
 		this.password = password;
-		this.renewalDetails = renewalDetails;
-		this.adminPolicies = adminPolicies;
+		
 	}
 	
 	public Admin() {
 		super();
 	}
 	
-	public List<Renewal> getRenewalDetails() {
-		return renewalDetails;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Admin [id=" + id + ", email=" + email + ", password=" + password + ", renewalDetails="
-				+ renewalDetails + ", adminPolicies=" + adminPolicies + "]";
-	}
-
-
-	public void setRenewalDetails(List<Renewal> renewalDetails) {
-		this.renewalDetails = renewalDetails;
-	}
-
-
-	public List<AdminPolicy> getAdminPolicies() {
-		return adminPolicies;
-	}
-
-
-	public void setAdminPolicies(List<AdminPolicy> adminPolicies) {
-		this.adminPolicies = adminPolicies;
-	}
 
 
 	public Integer getId() {

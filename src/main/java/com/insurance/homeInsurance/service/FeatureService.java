@@ -12,7 +12,7 @@ import com.insurance.homeInsurance.exception.FeatureException;
 public interface FeatureService {
 	
 	Feature addFeature(Feature newFeature) throws FeatureException ;
-	Feature updateFeature(Feature newFeature) throws CustomerException;
+	Feature updateFeature(Feature newFeature) throws FeatureException;
 	Collection<Feature> getAllFeatures();
 	Feature deleteFeatureById(Integer id) throws FeatureException;
 	OwnedPolicy getFeatureByOwnedPolicyId(Integer id) throws FeatureException;

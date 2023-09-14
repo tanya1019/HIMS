@@ -54,8 +54,11 @@ public class PropertyServiceImpl implements PropertyService {
 	 }
 	 Property property = propertyOpt.get();
 	 
-	 if (customer.getPropertyDetails().contains(property));
-	 return property;
+	 if (customer.getPropertyDetails().contains(property))
+	   return property;
+	 else {
+		 throw new PropertyException("Property does not blong to this customer" + propertyOpt);
+	 }
 	 // else throw exception property does not belong to customer
 	 }
 
@@ -72,5 +75,8 @@ public class PropertyServiceImpl implements PropertyService {
 		 
 		 return propsDetail;
 	}
+
+
+	
 
 }

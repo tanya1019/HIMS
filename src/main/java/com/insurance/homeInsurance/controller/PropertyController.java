@@ -39,4 +39,6 @@ public class PropertyController {
 	 return this.propertyServices.getPropertyByCustomerID(CustId);
 
 	 }
+	 
+	 
 }

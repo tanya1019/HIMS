@@ -33,22 +33,22 @@ public class FeatureServiceImpl implements FeatureService {
 		//created by Anish
 		//add new feature 
 		//Exception handling for adding new feature
-		Optional<Feature> FeatureOpt = this.featureRepo.findById(newFeature.getId());
-		
-		if(FeatureOpt.isPresent()) 
-			throw new FeatureException("Product Already Exist with id: " + newFeature.getId());
-	
+//		Optional<Feature> FeatureOpt = this.featureRepo.findById(newFeature.getId());
+//		
+//		if(FeatureOpt.isPresent()) 
+//			throw new FeatureException("Product Already Exist with id: " + newFeature.getId());
+//	
 		return this.featureRepo.save(newFeature);
 	}
 	
 	
 	@Override
-	public Feature updateFeature(Feature newFeature) throws CustomerException {
+	public Feature updateFeature(Feature newFeature) throws FeatureException {
 		
 		Optional<Feature> customerOpt = this.featureRepo.findById(newFeature.getId());
 		
 		if(!customerOpt.isPresent()) {
-			throw new CustomerException("Product not found of id --> " + newFeature.getId());
+			throw new FeatureException("Feature not found of id --> " + newFeature.getId());
 		}
 		return this.featureRepo.save(newFeature);
 	}
@@ -68,7 +68,7 @@ public class FeatureServiceImpl implements FeatureService {
 		Optional<Feature> FeatureOpt = this.featureRepo.findById(id);
 		
 		if(!FeatureOpt.isPresent()) {
-			throw new FeatureException("Item not found to delete, id no. is --> " + id);
+			throw new FeatureException("Feature not found to delete, id no. is --> " + id);
 		}
 		
 		this.featureRepo.delete(FeatureOpt.get());

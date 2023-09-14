@@ -1,21 +1,23 @@
 package com.insurance.homeInsurance.service;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.insurance.homeInsurance.dao.ClaimRepository;
-
+import com.insurance.homeInsurance.dao.CustomerRepository;
 import com.insurance.homeInsurance.dao.OwnedPolicyRepository;
 import com.insurance.homeInsurance.dao.PropertyRepository;
 import com.insurance.homeInsurance.entity.Claim;
-
+import com.insurance.homeInsurance.entity.Customer;
 import com.insurance.homeInsurance.entity.OwnedPolicy;
 import com.insurance.homeInsurance.entity.Property;
 import com.insurance.homeInsurance.exception.ClaimException;
-
+import com.insurance.homeInsurance.exception.CustomerException;
 import com.insurance.homeInsurance.exception.OwnedPolicyException;
 import com.insurance.homeInsurance.exception.PropertyException;
 
@@ -31,40 +33,11 @@ public class ClaimServiceImpl implements ClaimService{
 	
 	@Autowired
 	OwnedPolicyRepository ownedPolicyRepo;
+	
+	@Autowired
+	CustomerRepository customerRepo;
 
-	@Override
-	public Claim createClaimByPolicyIdAndPropertyId(Claim newClaim, Integer propId, Integer polId) throws ClaimException,PropertyException,OwnedPolicyException {
-		
-		//get property and ownedPolicy data:
-		Optional<Property> propOpt = this.propertyRepo.findById(propId);
-		Optional<OwnedPolicy> polOpt = this.ownedPolicyRepo.findById(polId);
-		
-		//check property is null or not
-		 if(!propOpt.isPresent()) {
-		 throw new PropertyException("Property not found" +propId);
-		 }
-		 //get property details:
-		 Property property = propOpt.get();
-		 
-		//check policy is null or not
-		 if(!polOpt.isPresent()) {
-			 throw new OwnedPolicyException("Policy not found" +polId);
-			 }
-		//get ownedPolicy details:
-		 OwnedPolicy ownedPolicy = polOpt.get();
-		 
-		 //set property to the new claim
-		 newClaim.setPropertyDetails(property);
-		 
-		//set policy to the new claim
-		 newClaim.setOwnedPolicyDetails(ownedPolicy);
-		 
-		 Claim claim = this.claimRepo.save(newClaim) ;
-		 
-		 //set claim in property:
-		 property.setClaim(claim);
-		 return claim;
-	}
+	
 
 	@Override
 	public Claim getClaimByPolicyIdAndPropertyId(Integer custId, Integer propId, Integer claimId) throws ClaimException,PropertyException,OwnedPolicyException {
@@ -97,6 +70,82 @@ public class ClaimServiceImpl implements ClaimService{
 	public Collection<Claim> getAllClaim() {
 		return this.claimRepo.findAll();
 	}
+	
+	
+	@Override
+
+	public Claim updateClaim(Integer id) throws ClaimException {
+		
+		Optional<Claim> claimOpt = this.claimRepo.findById(id);
+		if(!claimOpt.isPresent()) {
+			throw new ClaimException("Claim not found of id --> ");
+		}
+		Claim claim = claimOpt.get();
+		claim.setClaimReviewed(true);
+		return this.claimRepo.save(claim);
+
+	}
+
+//	@Override
+//	public void getClaimByCustomerId(Integer id) throws CustomerException {
+//		// TODO Auto-generated method stub
+//		
+//		Optional<Customer> custOpt = this.customerRepo.findById(id);
+//		 if (!custOpt.isPresent()) {
+//		 throw new CustomerException("Customer not found" + id);
+//		 }
+//		 Customer customer = custOpt.get();
+//		  
+//		 List<Claim> getAllClaims = customer.getClaimDetails();
+//		 
+//		return getAllClaims;
+//	}
+
+	@Override
+	public Claim createClaimByPolicyIdAndCustomerId(Claim newClaim, Integer polId, Integer custId)
+			throws ClaimException, OwnedPolicyException, CustomerException {
+		
+		Optional<OwnedPolicy> polOpt = this.ownedPolicyRepo.findById(polId);
+		 if(!polOpt.isPresent()) {
+			 throw new OwnedPolicyException("Policy not found" +polId);
+			 }
+		 OwnedPolicy ownedPolicy = polOpt.get();
+		 
+		 
+		 Optional<Customer> custOpt = this.customerRepo.findById(custId);
+		 if(!custOpt.isPresent()) {
+			 throw new CustomerException("Customer not found" +polId);
+			 }
+		 Customer customer = custOpt.get();
+		 
+		 ownedPolicy.setIssueDate(LocalDate.now());
+		 
+		 newClaim.setCustomerDetails(customer);
+		 newClaim.setOwnedPolicyDetails(ownedPolicy);
+		 
+		 Claim claim = this.claimRepo.save(newClaim) ;
+		 
+		 customer.getClaimDetails().add(claim);
+		 this.customerRepo.save(customer);
+
+		 return claim;
+	}
+
+	@Override
+	public List<Claim> getClaimByCustomerId(Integer id) throws CustomerException {
+		Optional<Customer> custOpt = this.customerRepo.findById(id);
+		 if (!custOpt.isPresent()) {
+		 throw new CustomerException("Customer not found" + id);
+		 }
+		 Customer customer = custOpt.get();
+		  
+		 List<Claim> getAllClaims = customer.getClaimDetails();
+		 
+		 if(customer.getClaimDetails().contains(getAllClaims));
+		 	return getAllClaims;
+		
+	}
+	
 	
 	
 	
