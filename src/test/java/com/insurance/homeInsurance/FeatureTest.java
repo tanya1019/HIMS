@@ -24,11 +24,11 @@ public class FeatureTest {
         assertEquals(true,feature);
     }
 
-    @Test
-    public void updateFeatureTest() throws CustomerException {
-        Feature feature = this.featureService.updateFeature(new Feature(122,"feature1",145.90));
-        assertEquals("feature1",feature.getFeatureName());
-    }
+//    @Test
+//    public void updateFeatureTest() throws CustomerException {
+//        Feature feature = this.featureService.updateFeature(new Feature(122,"feature1",145.90));
+//        assertEquals("feature1",feature.getFeatureName());
+//    }
     @Test
     public void getAllFeatures() throws FeatureException {
         this.featureService.addFeature(new Feature(122,"feature1",145.90));

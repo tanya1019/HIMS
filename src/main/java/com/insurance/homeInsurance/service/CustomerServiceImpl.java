@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Optional<Customer> customerOpt = this.customerRepo.findById(newCustomer.getId());
 		
 		if(!customerOpt.isPresent()) {
-			throw new CustomerException("Product not found of id --> " + newCustomer.getId());
+			throw new CustomerException("Feature not found of id --> " + newCustomer.getId());
 		}
 		return this.customerRepo.save(newCustomer);
 	}
