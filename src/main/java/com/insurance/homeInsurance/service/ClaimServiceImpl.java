@@ -103,7 +103,7 @@ public class ClaimServiceImpl implements ClaimService{
 
 	@Override
 	public Claim createClaimByPolicyIdAndCustomerId(Claim newClaim, Integer polId, Integer custId)
-			throws ClaimException, PropertyException, OwnedPolicyException, CustomerException {
+			throws ClaimException, OwnedPolicyException, CustomerException {
 		
 		Optional<OwnedPolicy> polOpt = this.ownedPolicyRepo.findById(polId);
 		 if(!polOpt.isPresent()) {
