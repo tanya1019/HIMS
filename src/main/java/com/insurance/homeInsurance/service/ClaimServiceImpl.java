@@ -118,8 +118,8 @@ public class ClaimServiceImpl implements ClaimService{
 			 }
 		 Customer customer = custOpt.get();
 		 
-		 ownedPolicy.setIssueDate(LocalDate.now());
-		 
+		
+		 newClaim.setClaimedDate(LocalDate.now()); 
 		 newClaim.setCustomerDetails(customer);
 		 newClaim.setOwnedPolicyDetails(ownedPolicy);
 		 
